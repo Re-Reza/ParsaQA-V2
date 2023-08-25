@@ -1,0 +1,14 @@
+.title{
+    font-weight: 800;
+    font-size: 1.9em;
+}
+.featurelistItem{
+    list-style: disc;
+}
+.teamListContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr) );
+    grid-column-gap: 30px;
+    grid-row-gap: 40px;
+    margin-top: 6em;
+}

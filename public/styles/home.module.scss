@@ -1,0 +1,107 @@
+@import "./globalUtiles.module.scss";
+
+.introduction-featureSection{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-column-gap: 25px;
+    grid-row-gap: 35px;
+    justify-content: center;
+    margin-top: 3em;
+    background: linear-gradient(90deg, #c1c8e4 0%, #84ceeb8a 0.01%, #8860d0a8 100%);
+    padding: 1.5em 3em;
+    border-radius: 20px;
+}
+.introduction-featureSection-icon{
+    background-color: #ffffff30;
+    border-radius: 17px;
+    margin-bottom: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+.introduction-appIntroSection{
+    display: flex;
+    position: relative;
+    background: linear-gradient(90deg, #C1C8E4 0%, #84CEEB 0.01%, #8860D0 100%), #E5E6ED;
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    margin: 4em 0 2em 0;
+    padding: 1.5em 1.8em;
+}
+.downloadBtn{
+    background-color: #000;
+    box-shadow: 0 0 15px rgba($color: #000, $alpha: .4);
+    color: #fff;
+    @include btnGeneral(.5em .8em, .8em, 400, 8px)
+}
+.ourTeamSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--skyBlue);
+    border-radius: 20px;
+    padding: 1.3em;
+}
+.ourTeamIcon{
+    margin-top: .6em;
+    color: #0076B2;
+    font-size: 1.3em;
+}
+@media only screen and (max-width : 1000px) {
+	.introduction-featureSection{
+        padding: 0 1em;
+        // grid-template-columns: 1fr ;
+	}
+}
+
+//----------------------------- aside styles -------------------------------------
+.aside-categories{
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 60px;
+    grid-row-gap: 20px;
+}
+.aside-categoriesItem{
+    background-color: #DDD0F8;
+    padding: .7em;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    text-align: center;
+}
+.hadisContainer{
+    padding: 1.2em;
+    border-radius: 15px;
+    background: linear-gradient(90deg, rgba(193, 200, 228, 0.50) 0%, rgba(132, 206, 235, 0.50) 0.01%, rgba(136, 96, 208, 0.50) 100%);
+    color: #fff;
+    margin-bottom: 1.5em;
+}
+.adsContainer{
+    background: linear-gradient(90deg, rgba(193, 200, 228, 0.50) 0%, rgba(132, 206, 235, 0.50) 0.01%, rgba(136, 96, 208, 0.50) 100%);
+    font-weight: 500;
+    color: #fff;
+    font-size: 1.4em;
+    padding: 4em 3em;
+    border-radius: 15px;
+}
+// ------------------------------- daily question -------------------------------
+.filterItem{
+    font-weight: 700;
+    color: #ACACAC;
+    font-size: 1em;
+    padding: .4em 0 .4em 1.5em;
+    margin-right: 1.5em;
+    border-left: 1.5px solid var(--darkBlue);
+    transition: .3s all;
+    &:hover{
+        color: var(--darkBlue);
+    }
+}

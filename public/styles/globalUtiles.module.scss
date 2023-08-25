@@ -1,0 +1,13 @@
+@mixin btnGeneral ($padding, $fs, $fw, $border-radius : 5px, $time:.4s) {
+    padding: $padding;
+    font-size: $fs;
+    font-weight: $fw;
+    border-radius:  $border-radius;
+    transition: all $time;
+}
+@mixin btnBorederd ($borderRadius:2px, $color, $border, $bg:inherit){
+    border-radius: $borderRadius;
+    color: $color;
+    border: $border;
+    background-color: $bg;
+}

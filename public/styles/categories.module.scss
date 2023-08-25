@@ -1,0 +1,76 @@
+@import "./globalUtiles.module.scss";
+
+.mainContainer{
+    display: grid;
+    grid-template-columns : 1fr 3fr;
+    grid-column-gap: 27px;
+}
+.newQuestionBtn{
+    @include btnGeneral(.9em 1em, 1em, 500, 7px);
+    @include btnBorederd(7px,#fff, 1px solid var(--darkBlue), var(--darkBlue) );
+}
+.newQuestionBtn:hover{
+    @include btnBorederd(7px, var(--darkBlue), 1px solid var(--darkBlue), #fff );
+}
+.questionItem{
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+    padding: 1em;
+}
+.tagsContainer{
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 125px) );
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.tag{
+    border-radius: 7px;
+    display: flex;
+    padding: .3em .5em;
+    justify-content: center;
+    color:#232323;
+    align-items: center;
+    background-color: var(--skyBlue);
+}
+.aside{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1em;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);
+    max-height: 1000px;
+    overflow-y: auto;
+}
+.filterBtn{
+    @include btnGeneral(.9em 2.5em, 1em, 500, 7px);
+    @include btnBorederd(7px,var(--darkBlue), 1.5px solid var(--darkBlue),#fff );
+}
+.filterBtn:hover {
+    color: #fff;
+    background-color: var(--darkBlue);
+}
+.bread-container{
+    background-color: #fff;
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.15);
+    display: flex;
+    border-radius: 8px;
+    padding: .8em;
+}
+
+// ------------------------------- tag page styles ----------------------------------
+.tag-mainContent {
+    display: grid;
+    grid-template-columns: 1fr 3.1fr;
+    grid-column-gap: 30px;
+    position: relative;
+    z-index: 9;
+    margin-top: 1.5em;
+}
+.tagBtn{
+    @include btnGeneral(.9em 1em, 1em, 700, 9px);
+    @include btnBorederd(7px,var(--darkBlue), 1.5px solid var(--darkBlue),#fff );
+}
