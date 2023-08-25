@@ -30,7 +30,7 @@ function Introduction() {
 
             <section className={styles["introduction-appIntroSection"]}>
 
-                <div className="text-white">
+                <div className={styles["introduction-appIntroSection-content"]+" text-white"}>
 
                     <p className="txt-c-normal">
                         به گروه 10 هزار نفری <span className="txt-c-large txt-large"> اپلیکیشن پارسا</span> بپیوندید
@@ -38,12 +38,12 @@ function Introduction() {
 
                     <div className="mb-4 mt-4 d-flex align-items-center justify-content-end">
                         <p className="txt-c-large me-4 txt-large">10000+</p>
-                        <div><img src="/imgs/parsaUsers.png" alt="parsaUsers" /></div>
+                        <div><img src="/imgs/parsaUsers.png" className="w-100" alt="parsaUsers" /></div>
                     </div>
 
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center flex-column flex-sm-row">
                         <div className="me-4">دانلود اخرین نسخه از اپلیکیشن پارسا</div>
-                        <div className="d-flex">
+                        <div className="d-flex mt-3 mt-sm-0">
                             <button className={"d-flex me-4 " + styles["downloadBtn"]}>
                                 <span className="d-flex flex-column me-2">
                                     <span className="mb-2">GET IT ON </span>
@@ -62,11 +62,13 @@ function Introduction() {
                     </div>
                 </div>
 
-                <div className="position-absolute" style={{ left: "3%", top: "-9%" }}>
-                    <img style={{ width: "430px" }} src="/imgs/phoneIntro.png" alt="phoneIntro" />
+                <div className={styles["appIntroImg-container"] + " position-absolute"} style={{ left: "3%", top: "-9%" }}>
+                    <img className={styles["appIntroImg"]} src="/imgs/phoneIntro.png" alt="phoneIntro" />
                 </div>
-
             </section>
+            <div className={styles["appIntroImg-alternate-container"]+"  justify-content-center ps-sm-5 pe-sm-5 ps-0 pe-0 position-relative"}>
+                <img className="w-100" src="/imgs/phoneIntro.png" alt="phoneIntro" />
+            </div>
         </>
     )
 }

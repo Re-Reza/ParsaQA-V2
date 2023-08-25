@@ -131,8 +131,9 @@
 }
 .footer-contentContainer{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     grid-column-gap: 25px;
+    grid-row-gap: 25px;
     justify-content: center;
     margin-bottom: 2.5em;
 }
@@ -182,17 +183,25 @@
 .hamburgerBtn{
     display: none;
 }
+.activeLink-mobile{
+    background-color: var(--skyBlue);
+    color: #232323;
+    border-radius: 9px;
+}
 .mobileLinks{
     background-color: #fff;
     border-radius: 8px;
     padding: 1.1em; 
     position: absolute;
-    top: 22%;
+    z-index: 100;
+    display: none;
+    top: 100%;
+    min-width: 100%;
 }
 .mobileLinks-item{
     color: #818181;
     border-bottom : 1px solid #D9D9D9;
-    padding: 1em;
+    padding: 1em 0;
     text-align: center;
 }
 .mobileLinks-item-actie{
@@ -225,11 +234,40 @@
     visibility: visible;
     transform: translateY(0);
 }
+.footer-mediaIcon{
+    background-color: rgb(255 255 255 / 17%);
+    border-radius: 8px;
+    padding: .5em;
+    color: #fff;
+    font-weight: bold;
+    margin-left: .4em;
+}
+.languagesList{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: var(--skyBlue);
+    padding: 0.7em;
+    z-index: 100;
+    border-radius: 10px;
+    left: 0;
+    margin-top: 1em;
+    box-shadow: 0 0 8px #00000009;
+}
+.languageItem{
+    padding: .5em;
+    border-radius: 8px;
+    transition: all .4s;
+    &:hover{
+        background-color: #c1c8e448;
+    }
+}
 @media only screen and (max-width : 1000px ) {
-    .installBtn{
+    .installText{
         display: none;
     }
-    .installBtnMobile{
+    .mobileLinks{
         display: block;
     }
     .navLinks{
@@ -244,8 +282,19 @@
     .header{
         font-size: .9em;
     }
+    .installBtn{
+        padding: .5em;
+    }
+}
+@media only screen and (max-width : 769px ) {
+    .advancedFilterContainer{
+        grid-template-columns: 1fr;
+    }
 }
 @media only screen and (max-width : 600px ) {
+    .header{
+        font-size: .8em;
+    }
     .header-title  {
         font-size:  1.5em;
     }
@@ -256,5 +305,13 @@
     }
     .header{
         font-size: .8em;
+    }
+}
+@media only screen and (max-width : 374px ) {
+    .logoImg {
+        width: 38px;
+    }
+    .header{
+        font-size: .7em;
     }
 }

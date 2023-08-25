@@ -2,13 +2,15 @@
 
 .introduction-featureSection{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
     grid-column-gap: 25px;
     grid-row-gap: 35px;
+    position: relative;
+    z-index: 20;
     justify-content: center;
     margin-top: 3em;
     background: linear-gradient(90deg, #c1c8e4 0%, #84ceeb8a 0.01%, #8860d0a8 100%);
-    padding: 1.5em 3em;
+    padding: 2em 3em;
     border-radius: 20px;
 }
 .introduction-featureSection-icon{
@@ -23,6 +25,7 @@
 .introduction-appIntroSection{
     display: flex;
     position: relative;
+    z-index: 20;
     background: linear-gradient(90deg, #C1C8E4 0%, #84CEEB 0.01%, #8860D0 100%), #E5E6ED;
     box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
@@ -48,13 +51,6 @@
     color: #0076B2;
     font-size: 1.3em;
 }
-@media only screen and (max-width : 1000px) {
-	.introduction-featureSection{
-        padding: 0 1em;
-        // grid-template-columns: 1fr ;
-	}
-}
-
 //----------------------------- aside styles -------------------------------------
 .aside-categories{
     background-color: #fff;
@@ -85,6 +81,8 @@
     margin-bottom: 1.5em;
 }
 .adsContainer{
+    width: max-content;
+    text-align: center;
     background: linear-gradient(90deg, rgba(193, 200, 228, 0.50) 0%, rgba(132, 206, 235, 0.50) 0.01%, rgba(136, 96, 208, 0.50) 100%);
     font-weight: 500;
     color: #fff;
@@ -105,3 +103,41 @@
         color: var(--darkBlue);
     }
 }
+.appIntroImg{
+    width: 430px;
+}
+.appIntroImg-alternate-container{
+    z-index: 10;
+    display: none;
+}
+.filtersContainer{
+    display: flex;
+}
+@media only screen and (max-width : 1150px) {
+    .introduction-appIntroSection{
+        font-size: .8em;
+    }
+    .appIntroImg{
+        width: 320px;
+    }
+}
+@media only screen and (max-width : 900px) {
+    .introduction-appIntroSection-content{
+        width: 100%;
+    }
+    .appIntroImg-container{
+        display: none;
+    }
+    .appIntroImg-alternate-container{
+        display: flex;
+    }
+    .filtersContainer{
+        display: none;
+    }
+}
+@media only screen and (max-width : 515px) {
+    .introduction-appIntroSection{
+        font-size: .7em;
+    }
+}
+

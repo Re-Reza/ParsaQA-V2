@@ -16,8 +16,7 @@ function Aside (props) {
     ]
     // console.log(props.data.length)
     return (
-        <aside>
-
+        <>
             <div className="mb-5">   
                 <div className="mb-4 txt-gray3 txt-c-large" style={{fontSize: "1.4em"}}>دسته بندی ها</div>
                 <ul className={styles["aside-categories"]}>
@@ -43,8 +42,7 @@ function Aside (props) {
                     محل تبلیغات شما
                 </div>
             </div>
-
-        </aside>
+        </>
     )
 }
 

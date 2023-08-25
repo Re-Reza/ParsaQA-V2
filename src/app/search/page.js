@@ -19,10 +19,15 @@ async function getSearchData(phrase){
 
 function Search({ searchParams }) {
 
-    console.log(searchParams.q)
-    const data = use(getSearchData(searchParams.q))
-    console.log(data);
-    
+    try{
+        console.log(searchParams.q)
+        const data = use(getSearchData(searchParams.q))
+        console.log(data);    
+    }
+    catch( err ) {
+        console.log(err);
+    }
+
     return (
         <>
             <div className="mainContentContainer">

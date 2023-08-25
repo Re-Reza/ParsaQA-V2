@@ -20,13 +20,21 @@ async function getQuestionsData() {
 }
 
 async function getCategoriesData(){
-    const responseData = (await getCategories()).data;
+    console.log("in this")
+    const responseData = (await getCategories());
+    console.log("hererer")
+    console.log(responseData)
     return responseData.data;
 }
 
 export default function Home() {
-    const h = use(getQuestionsData());
-    const categories = use(getCategoriesData());
+    try {
+        // const h = use(getQuestionsData());
+        // const categories = use(getCategoriesData())
+    }
+    catch ( err ) {
+        console.log(err)
+    }
 
     return (
         <>
@@ -34,7 +42,9 @@ export default function Home() {
                 <Header />
                 <div className="home-questionContainer">
                     <Questions />
-                    <Aside data={categories}/>
+                    <aside className="aside">
+                        <Aside/>
+                    </aside>
                 </div>
                 <Introduction />
                 {/* <OurTeam /> */}

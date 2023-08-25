@@ -23,11 +23,11 @@ function Questions() {
     return (
         <section >
 
-            <div className="d-flex justify-content-between w-100">
-                <div className="txt-c-large txt-large2 txt-gray3">پرسش روز</div>
-                <ul className="d-flex">   
+            <div className="d-flex justify-content-between fs-rsp w-100">
+                <div className="txt-c-large txt-large2 txt-gray3">پرسش های روز</div>
+                <ul className={styles["filtersContainer"]}>   
                     {
-                        filters.map((item, index) => <li role="button" className={styles["filterItem"]}>
+                        filters.map((item, index) => <li key={index} role="button" className={styles["filterItem"]}>
                             {item.title}
                         </li>)
                     }
