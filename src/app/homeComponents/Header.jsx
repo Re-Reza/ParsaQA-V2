@@ -1,6 +1,6 @@
 'use client';
-
-import React, { useState } from "react";
+import "../../i18next"
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import HeaderSearch from "./HeaderSearch";
@@ -9,23 +9,33 @@ import { IoDownloadOutline } from "react-icons/io5";
 import { BiSolidPencil } from "react-icons/bi";
 import HeaderLanguage from "./HeaderLanguage";
 import { Spin as Hamburger } from 'hamburger-react';
-import Form from 'react-bootstrap/Form';
+import { useTranslation } from "react-i18next";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import styles from "../../../public/styles/headerFooter.module.scss";
+import "../../i18next/index";
 
 function Header(props) {
 
     const pathname = usePathname();
+    const { t } = useTranslation("header");
 
     const links = [
-        { path: "/", title: "خانه" },
-        { path: "/b", title: "محصولات" },
-        { path: "/c", title: "درباره ما" },
-        { path: "/d", title: "تماس با ما" }
+        { path: "/", title: t("homeLink") },
+        { path: "/b", title: t("productLink") },
+        { path: "/c", title: t("aboutUsLink") },
+        { path: "/d", title: t("cantactUsLink") }
     ];
 
     const [ state, setState ] = useState({
         showlinkMenu : false,
     });
+
+    useEffect(() => {
+        AOS.init({
+            once : true
+        });
+      }, []);
 
     function showHamMenu(){
         setState({
@@ -48,7 +58,7 @@ function Header(props) {
                             }
                             
                             <li className="position-relative">
-                                <Link className={"me-3 fw-500 " + (pathname === "/categories" ? styles["active-link"] : "")} href="/categories">دسته بندی ها</Link>
+                                <Link className={"me-3 fw-500 " + (pathname === "/categories" ? styles["active-link"] : "")} href="/categories">{t("categories")}</Link>
                                 {/* <HeaderCategory /> */}
                             </li>
                         </ul>
@@ -66,11 +76,11 @@ function Header(props) {
 
                     <div className="d-flex align-items-center position-relative">
                         {/* <button className={styles["installBtnMobile"]}><IoDownloadOutline/></button> */}
-                        <button className={styles["installBtn"]}><span className="txt-c-large me"><IoDownloadOutline/></span> <span className={styles["installText"]}>نصب اپلیکیشن </span></button>
+                        <button className={styles["installBtn"]}><span className="txt-c-large me"><IoDownloadOutline/></span> <span className={styles["installText"]}>{t("installBtn")}</span></button>
                         <div className="txt-darkBlue txt-c-normal lh-base text-center" style={{ paddingBottom : ".4em" }}>
-                            <span className="me-2"><Link href="/">ورود</Link></span>
+                            <span className="me-2"><Link href="/">{t("signin")}</Link></span>
                             /
-                            <span className="ms-2"><Link href="/">عضویت</Link></span>
+                            <span className="ms-2"><Link href="/">{t("signup")}</Link></span>
                         </div>
                         <HeaderLanguage/>
                     </div>
@@ -90,10 +100,10 @@ function Header(props) {
                         </div>
                     </div> :
                     <>
-                        <h2 className={"text-center mb-4 mt-4 lh-base " + styles["header-title"]}>
-                            <span className="txt-darkBlue"> پارسا </span>
-                            شبکه اجتماعی پرسش و پاسخ دینی
-                            {/* به شکل تایبی بیاد */}
+                        <h2 data-aos="fade-up" data-aos-duration="1500" className={"text-center mb-4 mt-4 lh-base " + styles["header-title"]}>
+                            <span className="txt-darkBlue">{t("titleP1")}</span>
+                            &nbsp;
+                            {t("titleP2")}
                         </h2>
                         {
                         props.showSearch == false ? <></> : <HeaderSearch question={props.question} />

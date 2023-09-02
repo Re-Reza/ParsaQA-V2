@@ -83,3 +83,29 @@
         width: 100%;
     }
 }
+
+// ---------------------------------- pagination ----------------------------------
+.paginationList{
+    display: flex;
+    justify-content: end;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.paginationItem{
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #F1F1F1;
+    padding:.7em 1em;
+    color: #333333;
+    margin-right: .8em;
+    transition: all .4s;
+    font-weight: 500;
+    &:hover{
+        background-color: var(--darkBlue);
+        color: #fff;
+    }
+}
+.paginationItemActive{
+    background-color: var(--darkBlue);
+    color: #fff;
+}

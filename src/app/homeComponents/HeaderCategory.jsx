@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import styles from "../../../public/styles/headerFooter.module.scss";
 

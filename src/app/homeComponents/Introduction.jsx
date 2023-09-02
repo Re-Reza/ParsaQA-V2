@@ -1,24 +1,34 @@
+"use client"
 import React from "react";
-
 import { BsApple } from "react-icons/bs";
 import styles from "../../../public/styles/home.module.scss";
+import { useTranslation } from "react-i18next";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Introduction() {
+    
+    React.useEffect(() => {
+        AOS.init({
+            once : true
+        });
+    }, []);
 
+    const { t } = useTranslation("home");
     // use count up for this part
     const infoList = [
-        { icon : "questionIcon.png ", title : "تعداد کل سوالات", quanity : 486201 },
-        { icon: "userStarIcon.png", title: "تعداد پایگاههای مراجع", quanity: 9 },
-        { icon : "tagIcon.png", title : "تعداد  برچسب ها", quanity : 35206 },
-        { icon: "brainIcon.png", title: "منابع خزش شده", quanity : 16 },
-        { icon : "languageIcon.png", title : "تعداد زبان ها", quanity : 23 },
-    ]
+        { icon : "questionIcon.png ", title : t("questionsCount"), quanity : 486201 },
+        { icon: "userStarIcon.png", title: t("resourcesCount"), quanity: 9 },
+        { icon : "tagIcon.png", title : t("tagsCount"), quanity : 35206 },
+        { icon: "brainIcon.png", title: t("crawlingCount"), quanity : 16 },
+        { icon : "languageIcon.png", title : t("langCount"), quanity : 23 },
+    ];
 
     return (
         <>
             <section className={styles["introduction-featureSection"]}>
                 {
-                    infoList.map((item, index) => <article className="d-flex flex-column align-items-center" key={index}>
+                    infoList.map((item, index) => <article data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400" className="d-flex flex-column align-items-center" key={index}>
                         <div className={styles["introduction-featureSection-icon"]}>
                             <img src={"/imgs/" + item.icon} alt={item.icon} />
                         </div>
@@ -44,14 +54,14 @@ function Introduction() {
                     <div className="d-flex align-items-center flex-column flex-sm-row">
                         <div className="me-4">دانلود اخرین نسخه از اپلیکیشن پارسا</div>
                         <div className="d-flex mt-3 mt-sm-0">
-                            <button className={"d-flex me-4 " + styles["downloadBtn"]}>
+                            <button data-aos-delay="400" data-aos-duration="800" data-aos="fade-down" className={"d-flex me-4 " + styles["downloadBtn"]}>
                                 <span className="d-flex flex-column me-2">
                                     <span className="mb-2">GET IT ON </span>
                                     <span className="txt-c-large">Google Play</span>
                                 </span>
                                 <img style={{ width: "37px" }} src="/imgs/playStore.png" alt="playStore" />
                             </button>
-                            <button className={"d-flex " + styles["downloadBtn"]}>
+                            <button data-aos-delay="400" data-aos-duration="800" data-aos="fade-down" className={"d-flex " + styles["downloadBtn"]}>
                                 <span className="d-flex flex-column me-2">
                                     <span className="mb-2">Download on the </span>
                                     <span className="txt-c-large">App Store</span>
@@ -63,11 +73,11 @@ function Introduction() {
                 </div>
 
                 <div className={styles["appIntroImg-container"] + " position-absolute"} style={{ left: "3%", top: "-9%" }}>
-                    <img className={styles["appIntroImg"]} src="/imgs/phoneIntro.png" alt="phoneIntro" />
+                    <img className={styles["appIntroImg"]} data-aos="fade-up" data-aos-delay="500" data-aos-duration="1200" src="/imgs/phoneIntro.png" alt="phoneIntro" />
                 </div>
             </section>
             <div className={styles["appIntroImg-alternate-container"]+"  justify-content-center ps-sm-5 pe-sm-5 ps-0 pe-0 position-relative"}>
-                <img className="w-100" src="/imgs/phoneIntro.png" alt="phoneIntro" />
+                <img data-aos="fade-up" data-aos-delay="500" data-aos-duration="1200"className="w-100" src="/imgs/phoneIntro.png" alt="phoneIntro" />
             </div>
         </>
     )

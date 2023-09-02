@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "../../public/styles/global.scss";
-import Head from "next/head";
 
 export const metadata = {
   title: 'پارسا',

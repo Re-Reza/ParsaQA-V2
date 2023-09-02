@@ -1,5 +1,6 @@
+// "use client"
 export const metadata = {
-    title: 'جستجو',
+    title: 'نتیجه ی جستجو',
 }
 
 import React, { use } from "react";
@@ -11,22 +12,22 @@ import Footer from "../homeComponents/Footer";
 import { provideSearchResult } from "../../dataService/searchData";
 import styles from "../../../public/styles/categories.module.scss";
 
-async function getSearchData(phrase){
-    const responseData = (await provideSearchResult(phrase)).data;
-    console.log(responseData);
-    return responseData.data;
+import Error from "../error/Error";
+
+async function getSearchData(phrase, page){
+    try{
+        const responseData = (await provideSearchResult(phrase, page)).data;
+        return responseData;
+    }
+    catch(err){
+        console.log(err);
+        return null;
+    }
 }
 
 function Search({ searchParams }) {
 
-    try{
-        console.log(searchParams.q)
-        const data = use(getSearchData(searchParams.q))
-        console.log(data);    
-    }
-    catch( err ) {
-        console.log(err);
-    }
+    const data = use(getSearchData(searchParams.q, searchParams.page ))    
 
     return (
         <>
@@ -35,12 +36,18 @@ function Search({ searchParams }) {
 
                 <div style={{ marginTop: "1.6em", position: "relative", zIndex: "9" }}>
 
-                    <TopPartFilters />
+                {
+                    data ? 
+                    <>
+                        <TopPartFilters />
 
-                    <div className={styles["mainContainer"]}>
-                        <Aside />
-                        <MainContent />
-                    </div>
+                        <div className={styles["mainContainer"]}>
+                            <Aside />
+                            <MainContent query={searchParams.q} data={data}/>
+                        </div>
+                    </>
+                    : <Error/>
+                }
 
                 </div>
 

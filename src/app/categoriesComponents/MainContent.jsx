@@ -3,12 +3,15 @@
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import QuestionItem from "./QuestionItem";
+// import QuestionItem from "./QuestionItem";
+import QuestionItem from "./QuestionItem2";
+import Pagination from "./Pagination";
 import { categoryList } from "./treeList";
 import styles from "../../../public/styles/categories.module.scss";
 
-function MainContent() {
+function MainContent(props) {
 
+    const { data, links, meta } = props.data;
     // const searchParams = useSearchParams();
     // const indexs = searchParams.get('q').split("-")
     // const titles = [];
@@ -39,25 +42,20 @@ function MainContent() {
     //     }
     // });
 
-    const questionList = [
-        { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
-        { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
-        { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
-        { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
-        { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
-        { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
-        { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
-    ];
+    // const questionList = [
+    //     { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
+    //     { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
+    //     { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
+    //     { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
+    //     { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
+    //     { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
+    //     { topic: "نظر فلاسفه غربی راجع به جایگاه نماز و یا هرگونه عبادت و ریاضت به قصد  تعالی روحی چیست؟ لطفا منبع معرفی شود", tags: ["نماز", "فلسفه", "تاریخ اسلام"], user: "AliAbbasi_71", vots: 7, views: 2, answers: 15, time: 26 },
+    // ];
 
     return (
         <section>
 
             <article className="d-flex justify-content-between mb-4 align-items-center">
-{/* باید سایت چند زبانه باشه */}
-                <div>
-                    <span className="txt-c-large text-dark">نتایج</span>
-                    <span className="fw-500 ms-2 txt-gray">2500 نتیجه</span>
-                </div>
 
                 {/* <ul className={styles["bread-container"]}>
                     {
@@ -71,9 +69,12 @@ function MainContent() {
 
             <ul>
                 {
-                    questionList.map((item, index) => <QuestionItem key={index} item={item} />)
+                    props.data.data.map((item, index) => <QuestionItem key={index} item={item} />)
                 }
             </ul>
+
+            <Pagination data={{ meta, links, query : props.query }}/>
+            
 
         </section>
     )

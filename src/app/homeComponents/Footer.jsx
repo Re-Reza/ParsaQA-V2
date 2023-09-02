@@ -1,5 +1,8 @@
+"use client"
+
 import React from "react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next"
 import { ImPhone } from "react-icons/im";
 import { MdEmail } from "react-icons/md";
 import { FiTwitter } from "react-icons/fi";
@@ -9,22 +12,24 @@ import styles from "../../../public/styles/headerFooter.module.scss";
 
 function Footer(props) {
 
+    const { t } = useTranslation("footer");
+
     const links = {
         col1: [
-            { title: "درباره", path: "/" },
-            { title: "تیم پارسا", path: "/" },
-            { title: "شرایط و حریم خصوصی", path: "/" },
-            { title: "آخرین پرسش ها", path: "/" },
-            { title: "دسته بندی ها", path: "/" },
-            { title: "پربازدید ها", path: "/" },
+            { title: t("aboutUsLink"), path: "/" },
+            { title: t("team"), path: "/" },
+            { title: t("privacy"), path: "/" },
+            { title: t("lastQuestions"), path: "/" },
+            { title: t("categories"), path: "/" },
+            { title: t("virals"), path: "/" },
         ],
         col2: [
-            { title: "سوالات قرآنی", path: "/" },
-            { title: "سوالات احکام", path: "/" },
-            { title: "سوالات عقیدتی", path: "/" },
-            { title: "سوالات تاریخ اسلام", path: "/" },
-            { title: "سوالات نماز", path: "/" },
-            { title: "سوالات روزه", path: "/" },
+            { title: t("virals"), path: "/" },
+            { title: t("rulingsQuestions"), path: "/" },
+            { title: t("ideologicalQuestions"), path: "/" },
+            { title: t("historyQuestions"), path: "/" },
+            { title: t("pray1Questions"), path: "/" },
+            { title: t("pray2Questions"), path: "/" },
         ],
     };
 
@@ -35,13 +40,13 @@ function Footer(props) {
                 <div className={styles["footer-contentContainer"]}>
 
                     <div>
-                        <h4 className="mb-4 txt-c-medium txt-large text-white">پارسا </h4>
-                        <p className="lh-base">پارسا موتور جستجوی پرسش و پاسخ‌های حوزه علوم اسلامی به زبان‌های مختلف از منابع معتبر است؛ که هدف آن افزایش دانش و دسترسی ساخت یافته مخاطبین به پرسش و پاسخ‌های دینی؛ تسهیل فرآیند آشنایی مخاطبان با اصطلاحات فقهی موجود در استفتائات و رساله عملیه مراجع؛ ایجاد بستر مشترک برای رفع چالش‌های فنی مراکز پاسخگویی در ارائه محتوا به مخاطبان؛ کاهش هزینه‌های زمانی و مالی با جلوگیری از ایجاد پرسش‌های تکراری است.</p>
+                        <h4 className="mb-4 txt-c-medium txt-large text-white">{t("title")}</h4>
+                        <p className="lh-base">{t("description")}</p>
                     </div>
-
+                    
                     <div>
-                        <h4 className="mb-4 txt-c-medium text-white">آدرس</h4>
-                        <p className="lh-base mb-5">آزمايشگاه داده کاوی و پردازش تصوير، دانشکده مهندسي کامپيوتر، دانشگاه صنعتي شاهرود</p>
+                        <h4 className="mb-4 txt-c-medium text-white">{t("addressTitle")}</h4>
+                        <p className="lh-base mb-5">{ t("address") }</p>
                         <div className="mb-3  d-flex align-items-center">
                             <span className="me-3 txt-c-large text-white"><ImPhone /></span>
                             <span>09111169156</span>
@@ -53,12 +58,12 @@ function Footer(props) {
                     </div>
 
                     <div>
-                        <h4 className="mb-4 txt-c-medium text-white">لینک های سریع</h4>
+                        <h4 className="mb-4 txt-c-medium text-white">{t("fastLinks")}</h4>
                         <div className="container">
-                            <div className="row">
+                            <div className="row flex-column flex-sm-row">
                                 <ul className="col">
                                     {
-                                        links.col1.map((item, index) => <li key={index} className="mb-2"> <Link href={item.path}>{item.title}</Link> </li>)
+                                        links.col1.map((item, index) => <li key={index} className="mb-3"> <Link href={item.path}>{item.title}</Link> </li>)
                                     }
                                     <li className="d-flex mt-4">
                                         <div className={styles["footer-mediaIcon"]}><FiTwitter/></div>
@@ -69,7 +74,7 @@ function Footer(props) {
                                 </ul>
                                 <ul className="col gy-4">
                                     {
-                                        links.col2.map((item, index) => <li key={index} className="mb-2"> <Link href={item.path}>{item.title}</Link> </li>)
+                                        links.col2.map((item, index) => <li key={index} className="mb-3"> <Link href={item.path}>{item.title}</Link> </li>)
                                     }
                                     <li className="mt-4"><img src="/imgs/enamad.png" alt="enamad"/></li>
                                 </ul>

@@ -7,41 +7,44 @@ import Header from "./homeComponents/Header";
 import Aside from "./homeComponents/Aside";
 import Introduction from "./homeComponents/Introduction";
 import Questions from "./homeComponents/Questions";
-import OurTeam from "./homeComponents/OurTeam";
+// import OurTeam from "./homeComponents/OurTeam";
 import Footer from "./homeComponents/Footer";
+import Error from "./error/Error";
 import { getLastQuestions, getCategories } from "../dataService/homeData";
 
 
 
 async function getQuestionsData() {
-    // const resposne = await getLastQuestions();
-    // console.log(resposne.data)
-    return "hi"
+    try{
+        const resposne = await getLastQuestions();
+        return resposne.data;
+    }
+    catch(err) {
+        console.log(err);
+        return null;
+    }
 }
 
 async function getCategoriesData(){
-    console.log("in this")
-    const responseData = (await getCategories());
-    console.log("hererer")
-    console.log(responseData)
+    const responseData = await getCategories();
     return responseData.data;
 }
 
 export default function Home() {
-    try {
-        // const h = use(getQuestionsData());
-        // const categories = use(getCategoriesData())
-    }
-    catch ( err ) {
-        console.log(err)
-    }
+    
+    const serverData = use(getQuestionsData())
 
     return (
         <>
             <main className="mainContentContainer">
                 <Header />
                 <div className="home-questionContainer">
-                    <Questions />
+                    {
+                        serverData ? 
+                        <Questions data={serverData.data}/>
+                        :
+                        <Error/>
+                    }
                     <aside className="aside">
                         <Aside/>
                     </aside>

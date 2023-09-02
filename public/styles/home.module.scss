@@ -103,6 +103,9 @@
         color: var(--darkBlue);
     }
 }
+.filterItem:last-of-type{
+    border-left: none;
+}
 .appIntroImg{
     width: 430px;
 }

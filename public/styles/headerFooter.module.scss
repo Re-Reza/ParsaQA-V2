@@ -222,12 +222,15 @@
     padding-top: .7em;
     border-radius: 0 0 20px 20px;
     position: absolute;
+    top: 154.5%;
     width: 100%;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-40%);
     transition: all .4s;
     z-index: 1000;
+    max-height: 420px;
+    overflow-y: auto;
 }
 .showRecommand{
     opacity: 1;

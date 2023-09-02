@@ -1,8 +1,11 @@
+"use client"
 import React from "react";
-
+import { useTranslation } from "react-i18next";
 import styles from "../../../public/styles/home.module.scss";
 
 function Aside (props) {
+
+    const { t } = useTranslation("home");
 
     const categoryList = [
         { title : "قرآن", img : "/imgs/quran.png" },
@@ -14,11 +17,11 @@ function Aside (props) {
         { title : "اجتماعی سیاسی", img : "/imgs/political.png" },
         { title : "گوناگون", img : "/imgs/various.png" }
     ]
-    // console.log(props.data.length)
+
     return (
         <>
             <div className="mb-5">   
-                <div className="mb-4 txt-gray3 txt-c-large" style={{fontSize: "1.4em"}}>دسته بندی ها</div>
+                <div className="mb-4 txt-gray3 txt-c-large" style={{fontSize: "1.4em"}}>{t("categories")}</div>
                 <ul className={styles["aside-categories"]}>
                     {
                         categoryList.map((item, index) => <li role="button" className={styles["aside-categoriesItem"]} key={item.id}>
