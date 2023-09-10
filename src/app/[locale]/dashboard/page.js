@@ -1,9 +1,9 @@
 import React from "react";
 
 import Header from "../homeComponents/Header";
-import Footer from "..//homeComponents/Footer";
+import Footer from "../homeComponents/Footer";
 import { BsBookmark } from "react-icons/bs";
-import styles from "../../../public/styles/dashboard.module.scss";
+import styles from "../../../../public/styles/dashboard.module.scss";
 import QuestionItem from "../categoriesComponents/QuestionItem";
 
 function Dashboard() {

@@ -3,7 +3,7 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import styles from "../../../../public/styles/dashboard.module.scss";
+import styles from "../../../../../public/styles/dashboard.module.scss";
 
 function LayOut({ children }) {
 

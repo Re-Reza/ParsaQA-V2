@@ -1,7 +1,7 @@
 "use client"
-export const metadata = {
-    title: 'نتیجه ی جستجو',
-}
+// export const metadata = {
+//     title: 'نتیجه ی جستجو',
+// }
 
 import React, { use } from "react";
 import { useSearchParams } from "next/navigation";
@@ -32,6 +32,7 @@ function Search() {
     const page = searchParams.get('page');
     const data = use(getSearchData(search.replaceAll("-", " "), page )); 
 
+    
     return (
         <>
             <div className="mainContentContainer">

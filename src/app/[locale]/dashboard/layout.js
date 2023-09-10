@@ -1,8 +1,8 @@
 import React from "react";
 
-import Header from "../[locale]/homeComponents/Header";
-import Footer from "../[locale]/homeComponents/Footer";
-import AsideInfo from "../[locale]/dashboardComponents/AsideInfo";
+import Header from "../homeComponents/Header";
+import Footer from "../homeComponents/Footer";
+import AsideInfo from "../dashboardComponents/AsideInfo";
 
 import styles from "../../../../public/styles/dashboard.module.scss";
 
