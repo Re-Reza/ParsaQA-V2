@@ -38,8 +38,11 @@
     font-size: 1.5em;
 }
 .law-warns{
+    width: 30%;
     background-color: var(--skyBlue);
     border-radius: 15px;
     padding: 1.4em;
     margin-left: 3.5em;
+    opacity: 0;
+    transition: .3s all;
 }

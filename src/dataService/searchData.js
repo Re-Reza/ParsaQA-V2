@@ -6,5 +6,10 @@ export function provideSearchResult(phrase, page){
 } 
 
 export function autoComplete( data ){
-    return axiosInastanceBlue.post("autocomplete", data)
+    return axiosInastanceBlue.post("autocomplete", data);
+}
+
+export function voiceSearch(data) {
+    console.log(data);
+    return axiosInastance.post("voice/search", data);
 }
