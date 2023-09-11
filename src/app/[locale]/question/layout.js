@@ -1,5 +1,5 @@
-import Header from "../[locale]/homeComponents/Header";
-import Footer from "../[locale]/homeComponents/Footer";
+import Header from "../homeComponents/Header";
+import Footer from "../homeComponents/Footer";
 import styles from "../../../../public/styles/question.module.scss";
 
 export default function layout({ children }) {
