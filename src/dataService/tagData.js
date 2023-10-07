@@ -1,5 +1,5 @@
-import axiosInastanceBlue from "./axiosInstanceBlue";
+import axiosInastance from "./axiosInstance";
 
 export function getTagQuestions(data){
-    return axiosInastanceBlue.post("/search/tag", data); 
+    return axiosInastance.post("/search/tag", data); 
 }

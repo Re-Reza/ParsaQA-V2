@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 // import QuestionItem from "./QuestionItem";
 import QuestionItem from "./QuestionItem2";
-import Pagination from "./Pagination";
 import { categoryList } from "./treeList";
 import styles from "../../../../public/styles/categories.module.scss";
 
@@ -69,13 +68,9 @@ function MainContent(props) {
 
             <ul>
                 {
-                    props.data.data.map((item, index) => <QuestionItem key={index} item={item} />)
+                    props.data.map((item, index) => <QuestionItem isSearch={true} key={index} item={item} />)
                 }
-            </ul>
-
-            <Pagination data={{ meta, links, query : props.query }}/>
-            
-
+            </ul> 
         </section>
     )
 }

@@ -1,5 +1,6 @@
 "use client"
 import React from "react";
+import { useParams } from "next/navigation";
 import { BsApple } from "react-icons/bs";
 import styles from "../../../../public/styles/home.module.scss";
 import { useTranslations } from "next-intl";
@@ -14,6 +15,7 @@ function Introduction() {
         });
     }, []);
 
+    const { locale } = useParams();
     const t = useTranslations("home");
     // use count up for this part
     const infoList = [
@@ -71,8 +73,7 @@ function Introduction() {
                         </div>
                     </div>
                 </div>
-
-                <div className={styles["appIntroImg-container"] + " position-absolute"} style={{ left: "3%", top: "-9%" }}>
+                <div className={styles["appIntroImg-container"] + " position-absolute"} style={{ left: locale == "en" ? "63%" : "3%", top: "-9%" }}>
                     <img className={styles["appIntroImg"]} data-aos="fade-up" data-aos-delay="500" data-aos-duration="1200" src="/imgs/phoneIntro.png" alt="phoneIntro" />
                 </div>
             </section>

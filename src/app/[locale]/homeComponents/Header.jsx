@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import Link from "next/link";
 import HeaderSearch from "./HeaderSearch";
 import HeaderCategory from "./HeaderCategory";
@@ -18,13 +18,18 @@ import styles from "../../../../public/styles/headerFooter.module.scss";
 function Header(props) {
 
     const pathname = usePathname();
+    console.log(pathname)
     const t = useTranslations("header");
+    const { locale } = useParams();
+
+    const splitedPath = pathname.split("/");
+    const pathList = splitedPath.length == 2 ? splitedPath : splitedPath.slice(1, splitedPath.length);    
 
     const links = [
-        { path: "/", title: t("homeLink") },
-        { path: "/", title: t("productLink") },
-        { path: "/about-us", title: t("aboutUsLink") },
-        { path: "/about-us", title: t("cantactUsLink") }
+        { path: "", title: t("homeLink") },
+        // { path: "/", title: t("productLink") },
+        { path: "about-us", title: t("aboutUsLink") },
+        { path: "contact-us", title: t("cantactUsLink") }
     ];
 
     const [ state, setState ] = useState({
@@ -51,14 +56,14 @@ function Header(props) {
                     
                     <div className="d-flex align-items-center position-relative">
                         <button onClick={showHamMenu} className={styles["hamburgerBtn"]+" ms-2 me-sm-4"}><Hamburger/></button>
-                        <div className="me-5"><img className={styles["logoImg"]} src="/imgs/logoParsa.png" alt="logo-parsa" /></div>
+                        <div className="me-5"><img style={ locale == "en" ? {transform : "rotateY(180deg)"}: {} } className={styles["logoImg"]} src="/imgs/logoParsa.png" alt="logo-parsa" /></div>
                         <ul className={styles["navLinks"]+" d-flex me-5"}>
                             {
-                                links.map((item, index) => <li className={"me-3 fw-500 " + (pathname === item.path ? styles["active-link"] : "")} key={index}><Link href={item.path}>{item.title}</Link></li>)
+                                links.map((item, index) => <li className={"me-3 fw-500 " + (pathList.includes(item.path) ? styles["active-link"] : "")} key={index}><Link href={"/"+item.path}>{item.title}</Link></li>)
                             }
                             
                             <li className="position-relative">
-                                <Link className={"me-3 fw-500 " + (pathname === "/categories" ? styles["active-link"] : "")} href="/categories">{t("categories")}</Link>
+                                <Link className={"me-3 fw-500 " + ( pathList.includes("/categories") ? styles["active-link"] : "")} href="/categories">{t("categories")}</Link>
                                 {/* <HeaderCategory /> */}
                             </li>
                         </ul>
@@ -67,7 +72,7 @@ function Header(props) {
                             <ul className={styles["mobileLinks"]}>
                             {
                                 links.map((item, index) => <li className={styles["mobileLinks-item"]} key={index}>
-                                        <div style={{padding : ".5em 1em"}} className={item.path === pathname ? styles["activeLink-mobile"] : ""}><Link href={item.path}>{item.title}</Link></div>
+                                        <div style={{padding : ".5em 1em"}} className={ pathList.includes(item.path) ? styles["activeLink-mobile"] : ""}><Link href={item.path}>{item.title}</Link></div>
                                     </li>)
                                 }
                             </ul> : <></>
@@ -76,7 +81,7 @@ function Header(props) {
 
                     <div className="d-flex align-items-center position-relative">
                         {/* <button className={styles["installBtnMobile"]}><IoDownloadOutline/></button> */}
-                        <button className={styles["installBtn"]}><span className="txt-c-large me"><IoDownloadOutline/></span> <span className={styles["installText"]}>{t("installBtn")}</span></button>
+                        <button className={styles["installBtn"]+ " me-3"}><span className="txt-c-large me"><IoDownloadOutline/></span> <span className={styles["installText"]}>{t("installBtn")}</span></button>
                         <div className="txt-darkBlue txt-c-normal lh-base text-center" style={{ paddingBottom : ".4em" }}>
                             <span className="me-2"><Link href="/signin">{t("signin")}</Link></span>
                             /
@@ -106,7 +111,7 @@ function Header(props) {
                             {t("titleP2")}
                         </h2>
                         {
-                            props.showSearch == false ? <></> : <HeaderSearch question={props.question} />
+                            props.showSearch == false ? <></> : <HeaderSearch lang={props.lang} question={props.question} />
                         }
                     </>
                 }

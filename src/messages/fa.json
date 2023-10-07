@@ -11,7 +11,17 @@
         "signup" : "عضویت",
         "advancedSearch" : "جستجوی پیشرفته",
         "installBtn" : "نصب اپلیکیشن",
-        "searchInput" : "جستجوی سوال با کلیدواژه"
+        "searchInput" : "جستجوی سوال با کلیدواژه",
+        "allWords" : "همه ی عبارات",
+        "nonWords" : "هیچ کدام از عبارات",
+        "anyWords" : "با حداقل یکی از عبارات",
+        "betweenLanguages" : "در بین زبان ها",
+        "sources" : "دربین منابع",
+        "marjas" : "در بین مراجع",
+        "betweenTags" : "در بین تگ ها",
+        "applyFilter" : "اعمال فیلتر",
+        "multiSelect" : "انتخاب کنید",
+        "noMoreOptions" : "آیتمی یافت نشد"
     },
     "footer" : {
         "title" : "پارسا",
@@ -52,5 +62,21 @@
         "introCount" : "10000+",
         "introDownload" : "دانلود اخرین نسخه از اپلیکیشن پارسا",
         "adsContainer":"محل تبلیغات شما"
+    },
+    "question" : {
+        "rate" : "امتیاز",
+        "view" : "بازدید",
+        "answer" : "پاسخ",
+        "readTime": "زمان مطالعه :",
+        "answers" : "پاسخ ها",
+        "comments" : " کامنت ها",
+        "recommandedQuestion" : "سوالات پیشنهادی",
+        "similarQuestions" : "سوالات مشابه",
+        "cancel": "انصراف",
+        "submit" : "ثبت پاسخ",
+        "answering" : "پاسخ دادن",
+        "name" : "نام",
+        "phone" : "شماره موبایل",
+        "enterAnswer" : "پاسخ خود را اینجا درج کنید"
     }
 }

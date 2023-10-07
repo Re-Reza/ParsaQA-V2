@@ -23,7 +23,7 @@
     flex-direction: column;
     padding: 1.3em 2em;
     align-items: center;
-    width: 100%;
+    width: 90%;
     border-radius: 20px;
     background: linear-gradient(90deg, #c1c8e4b3 0%, #84ceeb7a 0.01%, #8860d070 100%), #E5E6ED;
     box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.15);
@@ -56,7 +56,7 @@
 .advancedFilterContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, 80px);
+    grid-template-rows: repeat(4, max-content);
     margin-top: 2.2em;
     grid-column-gap: 80px;
     grid-row-gap: 23px;
@@ -75,7 +75,25 @@
     box-shadow: 0 0 20px rgba($color: #000000, $alpha: .25);
     color: var(--darkBlue);
 }
+.filterListContainer{
+    z-index: 10;
+    position: absolute;
+    box-shadow: 0 0 11px #00000045;
+    width: 100%;
+    grid-row-gap: 10px;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: .6em;
+    margin-top: .5em;
+}
 .filterInput{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr) );
+    grid-column-gap: 10px;
+    grid-row-gap: 12px;
+    grid-auto-flow: row;
+}
+.optionsListContainer{
     background-color: #fff;
     border-radius: 7px;
     padding: .6em;
@@ -173,7 +191,7 @@
 }
 .advancedSearchBtn {
     @include btnBorederd(10px, #fff, 2px solid var(--darkBlue), var(--darkBlue));
-    @include btnGeneral(.4em .8em, 1em, 450, 10px);
+    @include btnGeneral(.4em .8em, .93em, 450, 10px);
     display: flex;
     align-items: center;
     &:hover{
@@ -285,6 +303,14 @@
     opacity: 1;
     visibility: visible !important;
 }
+.addBtn{
+    background-color: var(--lightBlue);
+    color: #fff !important;
+    font-weight: 500;
+    padding: .4em .6em;
+    font-size: 1.1em;
+    border-radius: 8px;
+}
 @media only screen and (max-width : 1000px ) {
     .installText{
         display: none;
@@ -311,6 +337,9 @@
 @media only screen and (max-width : 769px ) {
     .advancedFilterContainer{
         grid-template-columns: 1fr;
+    }
+    .header-searchContainer{
+        width: 100%;
     }
 }
 @media only screen and (max-width : 600px ) {

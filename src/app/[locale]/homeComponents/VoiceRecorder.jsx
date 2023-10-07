@@ -22,17 +22,22 @@ export default function VoiceRecorder(){
     useEffect(() => {
         if (!recordingBlob) return;
         // console.log(recordingBlob);
-        const url = URL.createObjectURL(recordingBlob);
-        // console.log(url)
+        const audioFile = new File([recordingBlob], "audio.webm", {
+            type: "audio/webm"
+        });
+        // console.log(audioFile)
+        const formData = new FormData();
+        formData.append("file", audioFile );
+        // console.log(formData.get("file"));
+        voiceSearch({
+            voice : formData.get("file"),
+            language : params.locale
+        }).then( response => {
+            console.log(response)
+        }).catch( err => {
+            console.log(err);
+        });
 
-        // voiceSearch({
-        //     voice : recordingBlob,
-        //     language : params.locale
-        // }).then( response => {
-        //     console.log(response)
-        // }).catch( err => {
-        //     console.log(err);
-        // })
     }, [recordingBlob]);
     
     let timer = null;

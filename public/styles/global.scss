@@ -1,4 +1,6 @@
-@import url("./vazir_font/Farsi-Digits/Vazirmatn-FD-font-face.css");
+@import url("./fonts/urbanist/urbanist-font-face.css");
+@import url("./fonts/vazir_font/Farsi-Digits/Vazirmatn-FD-font-face.css");
+@import url("./fonts/Noto_Sans_Arabic/Noto_Sans_Arabic-font-face.css");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -16,13 +18,13 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	direction: rtl;
+	// direction: rtl;
 	box-sizing: border-box;
 	border: none;
 	font: inherit;
 	box-sizing: border-box;
 	vertical-align: baseline;
-	font-family: "Vazirmatn FD";
+	// font-family: "Urbanist en";
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -44,6 +46,7 @@ input:focus, textarea:focus{
 }
 a:hover{
 	color: inherit;
+	// transition: inherit;
 }
 body {
 	line-height: 1;
@@ -176,6 +179,19 @@ select {
 .bg-darkBlue{
 	background-color: var(--darkBlue) !important;
 }
+.oneLineText{
+	white-space : nowrap;
+}
+// ------------------------------------- multi select ---------------------------------- 
+.search-wrapper{
+	border: none !important;
+	display: flex;
+    flex-direction: column-reverse;
+}
+.chip:last-of-type{
+	margin-top: 1em;
+}
+// -------------------------------------------------------------------------------------
 @media only screen and (max-width : 1200px) {
 	.mainContentContainer{
 		padding-left: 3em;

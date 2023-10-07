@@ -1,6 +1,5 @@
 import axiosInastance from "./axiosInstance";
 
-
 export function sendOnetimeCode(data){
     return axiosInastance.post("auth/request/mobile/otp", data)
 }

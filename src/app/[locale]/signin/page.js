@@ -79,7 +79,7 @@ function Signin(){
             />
             <div className="mainContentContainer" style={{ paddingBottom: "13em" }}>
                 <Header showSearch={false} isAboutUs={true}/>
-                <div className="d-flex justify-content-center">
+                <div className={"d-flex justify-content-center"+" "+styles["formContainer"]}>
                     <div style={{ minWidth: "30%" }}>
                         <h1 className="txt-c-large text-center mb-5" style={{ fontSize: "1.5em" }}>ورود کاربر</h1>
                         <div className="mb-4">

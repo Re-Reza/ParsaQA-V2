@@ -1,7 +1,7 @@
 
 import React from "react";
 import AnswerQuestion from "../../../../questionComponents/AnswerQuestion";
-import RelatedQuestions from "../../../../questionComponents/RelatedQuestions";
+import RelatedQuestions from "../../../../questionComponents/RecommandedQuestion";
 import LastQuestions from "../../../../questionComponents/LastQuestions";
 import QuestionItem from "../../../../categoriesComponents/QuestionItem";
 import styles from "../../../../../../../public/styles/question.module.scss";

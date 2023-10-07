@@ -13,9 +13,9 @@ import Footer from "./homeComponents/Footer";
 import Error from "./error/Error";
 import { getLastQuestions, getCategories } from "../../dataService/homeData";
 
-async function getQuestionsData() {
+async function getQuestionsData(locale) {
     try{
-        const resposne = await getLastQuestions();
+        const resposne = await getLastQuestions(locale);
         return resposne.data;
     }
     catch(err) {
@@ -25,19 +25,26 @@ async function getQuestionsData() {
 }
 
 async function getCategoriesData(){
-    const responseData = await getCategories();
-    return responseData.data;
+    try{
+        const responseData = await getCategories(1);
+        return responseData.data;
+    }
+    catch(err) {
+        console.log(err);
+        return null;
+    }
+    
 }
 
-export default function Home() {
-    
-    const serverData = use(getQuestionsData())
+export default function Home({ params : { locale }}) {
+    // const serverData = use(getQuestionsData(locale));
+    // const categories = ( use(getCategoriesData()) );
 
     return (
         <>
             <main className="mainContentContainer">
-                <Header />
-                <div className="home-questionContainer">
+                <Header lang={locale} />
+                {/* <div className="home-questionContainer">
                     {
                         serverData ? 
                         <Questions data={serverData.data}/>
@@ -45,9 +52,12 @@ export default function Home() {
                         <Error/>
                     }
                     <aside className="aside">
-                        <Aside/>
+                        {
+                            categories ? 
+                            <Aside data={categories.data}/> : <></>
+                        }
                     </aside>
-                </div>
+                </div> */}
                 <Introduction />
                 {/* <OurTeam /> */}
             </main>

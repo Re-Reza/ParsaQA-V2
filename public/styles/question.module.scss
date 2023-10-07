@@ -39,3 +39,41 @@
         @include btnBorederd(8px, #fff, 1px solid var(--darkBlue), var(--darkBlue));
     }
 }
+.questionBox {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);
+    padding: 1.5em
+}
+.questionContent-question{
+    @extend .questionBox;
+    display: flex;
+    align-items: start;
+    margin-bottom: 1.2em;
+}
+.questionContent-answer{
+    @extend .questionBox;
+}
+.tagsContainer{
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 125px) );
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.tag{
+    border-radius: 7px;
+    display: flex;
+    padding: .3em .5em;
+    justify-content: center;
+    color:#232323;
+    align-items: center;
+    text-align: center;
+    line-height: 1.1;
+    background-color: var(--skyBlue);
+}
+@media only screen and (max-width : 800px) {
+	.contentContainer{
+        grid-template-columns: 1fr;
+    }
+}

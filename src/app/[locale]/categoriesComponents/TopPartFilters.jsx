@@ -11,7 +11,7 @@ function TopPartFilters(props) {
     const filters = ["جدیدترین", "مرتبط ترین", "پربازدیدترین", "پرمخاطب ترین", "ماه گذشته"]
 
     return (
-        <div className="txt-muted justify-content-between overflow-auto align-items-center txt-c-normal d-flex mb-4">
+        <div className="txt-muted justify-content-between align-items-center txt-c-normal d-flex mb-4">
             <div className="me-3 d-flex">
                 {
                     props.isCategory == true ? <div className="txt-c-large text-dark">دسته بندی ها</div> :
@@ -25,7 +25,7 @@ function TopPartFilters(props) {
                         filters.map((item, index) => <div role="button" className={index == state.activeFilter ? "txt-darkBlue me-5" : "me-5"} onClick={() => setState({ ...state, activeFilter: index })} key={index}>{item}</div>)
                     }
                 </div>
-                <button className={styles["newQuestionBtn"]}>پرسش جدید</button>
+                {/* <button className={styles["newQuestionBtn"]}>پرسش جدید</button> */}
             </div>
         </div>
     )

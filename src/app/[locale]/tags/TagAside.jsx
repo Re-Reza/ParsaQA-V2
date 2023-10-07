@@ -4,7 +4,7 @@ import FilterOption from "../categoriesComponents/FilterOption";
 import TreeFilter from "../categoriesComponents/TreeFilter";
 import styles from "../../../../public/styles/categories.module.scss";
 
-function TagAside(){
+function TagAside(props){
 
     const relatedTagds = [
         { title : "غرور کاذب", count : 120 },
@@ -24,7 +24,7 @@ function TagAside(){
                 <h3 className="txt-gray3 txt-c-large txt-large2 me-3">تگ</h3>
                 <button className={styles["tagBtn"]}>
                     <span className="me-2 txt-muted"><AiOutlineClose/></span>
-                    خود برتر بینی
+                    { props.tag}
                 </button>
                 <div className="txt-gray ms-3 fw-500">2500 نتیجه</div>
             </div>

@@ -1,15 +1,14 @@
 "use client"
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Form from "react-bootstrap/Form";
 import { BsSearch } from "react-icons/bs";
 import { MdSavedSearch } from "react-icons/md";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { AiOutlineClose } from "react-icons/ai";
+
 import VoiceRecorder from "./VoiceRecorder";
-import { autoComplete } from "../../../dataService/searchData";
-import { getCookie } from "../../../dataService/cookieProvider";
+import AdvancedSearch from "./AdvancedSearch";
+import { autoComplete, provideAllSources, provideAllTags, provideMarjas } from "../../../dataService/searchData";
 import styles from "../../../../public/styles/headerFooter.module.scss";
 import { useTranslations } from "next-intl";
 
@@ -20,21 +19,64 @@ function HeaderSearch(props) {
     const [ state, setState ] = useState({
         activeButton: -1,
         showFilters : false,
-        recommendations : []
+        recommendations : [],
+        sources : [],
+        marjas : [],
+        tags: [],
+        langs:[],
+        selectedSources : [],
+        selectedMarjas : [],
+        selectedTags : [],
+        any_words : [], 
+        non_words : [],
+        all_words : [],
+        isAdvanced : false,
     });
+
+    function setAdvandedSeacrhData(all_words, non_words, any_words, langs, tags, sources, marjas){
+        setState({
+            ...state,
+            isAdvanced : true,
+            selectedTags : tags,
+            non_words,
+            langs,
+            any_words,
+            all_words,
+            selectedSources: sources,
+            selectedMarjas: marjas
+        });
+    }
+
+    const { marjas, sources, tags, all_words, langs,non_words ,any_words, isAdvanced } = state;
+    useEffect(() =>{ ( async () => {
+        
+        if( marjas.length == 0 || sources.length == 0 || tags.length == 0 ){
+            const sourcesData = (await provideAllSources()).data;
+            const marjasData = (await provideMarjas()).data;
+            const tagsData = (await provideAllTags()).data;
+            console.log(sourcesData)
+            setState({
+                ...state,
+                tags : tagsData.data,
+                marjas : marjasData.data,
+                sources : sourcesData.data
+            });
+        }
+
+    })() } , [state.showFilters])
 
     const searchInput = useRef(null);
 
-    const buttons = [
-        { title: "حدیث", id: 0 },
-        { title: "احکام", id: 1 },
-        { title: "قرآن کریم", id: 2 },
-        { title: "تاریخ و سیره", id: 3 },
-        { title: "اخلاق و تربیت اسلامی", id: 4 },
-        { title: "اجتماعی سیاسی", id: 5 },
-    ];
+    // const buttons = [
+    //     { title: "حدیث", id: 0 },
+    //     { title: "احکام", id: 1 },
+    //     { title: "قرآن کریم", id: 2 },
+    //     { title: "تاریخ و سیره", id: 3 },
+    //     { title: "اخلاق و تربیت اسلامی", id: 4 },
+    //     { title: "اجتماعی سیاسی", id: 5 },
+    // ];
 
-    const tags = ["نماز", "حجاب", "قرآن"]
+    // const tags = ["نماز", "حجاب", "قرآن"]
 
     function setNewButton(id) {
         setState({
@@ -46,8 +88,18 @@ function HeaderSearch(props) {
     const { push } = useRouter();
     function searchRequest(){
         const inputValue = searchInput.current.value.replaceAll(" ", "-");
-        if(inputValue.trim() != "" && inputValue != null ) {
-            push(`/fa/search?q=${inputValue}`);
+        console.log(isAdvanced)
+        if( isAdvanced )
+        {
+            console.log("configuring")
+            if(inputValue.trim() != "" && inputValue != null ) {
+                push(`/search?isAdvanced=1&q=${inputValue}&tags=${state.tags}&langs=${langs}&sources=${sources}&all_words=${all_words}&marjas=${marjas}&any_words=${any_words}&all_words=${all_words}&non_words=${non_words}`);
+            }
+        }
+        else {
+            if(inputValue.trim() != "" && inputValue != null ) {
+                push(`/search?q=${inputValue}`);
+            }
         }
     }
 
@@ -65,8 +117,9 @@ function HeaderSearch(props) {
             if( data.text != value ){
                 data = {
                     text : value,
-                    lang : getCookie("language")
+                    lang : props.lang
                 }
+                console.log(data)
                 autoComplete(data).then( response => {
                     setState({
                         ...state,
@@ -85,6 +138,10 @@ function HeaderSearch(props) {
 
     const fillInput = (value) => {
         searchInput.current.value = value;
+        setState({
+            ...state,
+            recommendations : []
+        });
     }
 
     return (
@@ -139,87 +196,7 @@ function HeaderSearch(props) {
 
                 {
                     state.showFilters ? 
-                        <div className={styles["advancedFilterContainer"]}>
-                        
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="me-4 txt-gray3 fw-500">
-                                <label>عبارت شامل</label>
-                                <br/>
-                                <span>(بین عبارت ها "و" بر قرار است)</span>
-                            </div>
-                            <ul className={styles["filterInput"]+" d-flex"}>
-                                {
-                                tags.map((item, index) => <li className={styles["tag"]} key={index}>
-                                    <span className="me-2" role="button"><AiOutlineClose /></span>
-                                    <span>{item}</span>
-                                </li>)
-                                }
-                            </ul>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="me-4 txt-gray3 fw-500">
-                                <label>در بین زبان ها</label>
-                            </div>
-                            <Form.Select >
-                                <option>زبان فارسی</option>
-                            </Form.Select>
-                        </div>
-                        
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="me-4 txt-gray3 fw-500">
-                                <label>یکی از این عبارات</label>
-                                <br/>
-                                <span>(بین عبارت ها "یا" بر قرار است)</span>
-                            </div>
-                            <div>
-                                <input className={styles["filterInput"]} type="text" placeholder="کلیدواژه"/>
-                            </div>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="me-4 txt-gray3 fw-500">
-                                <label>در بین  پایگاه ها</label>
-                            </div>
-                            <Form.Select >
-                                <option>پرسمان دانشجویی</option>
-                            </Form.Select>
-                        </div>
-                        
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="me-4 txt-gray3 fw-500">
-                                <label>دقیقا این عبارت</label>
-                            </div>
-                            <div>
-                                <input className={styles["filterInput"]} type="text" placeholder="کلیدواژه"/>
-                            </div>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="me-4 txt-gray3 fw-500">
-                                <label>آخرین آپدیت</label>
-                            </div>
-                            <Form.Select>
-                                <option>یکماه قبل</option>
-                            </Form.Select>
-                        </div>                    
-                
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="me-4 txt-gray3 fw-500">
-                                <label>هیچکدام از این عبارت</label>
-                            </div>
-                            <input className={styles["filterInput"]} type="text" placeholder="کلید واژه"/>
-                        </div>
-                
-                        <div className="d-flex align-items-center justify-content-between">
-                            <div className="me-4 txt-gray3 fw-500">
-                                <label>وضعیت سوال</label>
-                            </div>
-                            <Form.Select >
-                                <option>بدون پاسخ</option>
-                            </Form.Select>
-                        </div>
-                    </div> : <></>
+                    <AdvancedSearch setAdvandedSeacrhData={setAdvandedSeacrhData} tags={tags} sources={sources} marjas={marjas} /> : <></>
                 }
 
             </div>

@@ -11,7 +11,17 @@
         "signup" : "signin",
         "advancedSearch" : "advanced search",
         "installBtn" : "install",
-        "searchInput" : "Search question with keyword"
+        "searchInput" : "Search question with keyword",
+        "allWords" : "all phrases",
+        "nonWords" : "none of the phrases",
+        "anyWords" : "at least one of the phrases",
+        "betweenLanguages" : "between languages",
+        "sources" : "between the sources",
+        "marjas" : "between the references",
+        "betweenTags" : "between tags",
+        "applyFilter" : "apply filter",
+        "multiSelect" : "select",
+        "noMoreOptions": "no more options"
     }, 
     "footer" : {
         "title" : "Parsa",
@@ -52,5 +62,22 @@
         "introCount" : "10000+",
         "introDownload" : "Download the latest version of Parsa application",
         "adsContainer" : "Place your ads"
+    },
+    "question" : {
+        "rate" : "rate",
+        "view" : "view",
+        "answer" : "answer",
+        "readTime" : "read time : ",
+        "answers" : "answers",
+        "comments" : "comments",
+        "similarQuestions" : "simlar questions",
+        "recommandedQuestion" : "recommended question",
+        "cancel": "cancel",
+        "submit" : "submit",
+        "answering" : "answer",
+        "name" : "name",
+        "phone" : "phone number",
+        "enterAnswer" : "Enter your answer here"
     }
 }
+

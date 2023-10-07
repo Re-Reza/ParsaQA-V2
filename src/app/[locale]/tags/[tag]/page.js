@@ -1,22 +1,29 @@
 import React, { use } from "react";
-import { useParams,  usePathname } from "next/navigation";
-// import { useRouter } from "next/router";
-// import { use}
 import Header from "../../homeComponents/Header";
 import TagAside from "../TagAside";
 import Footer from "../../homeComponents/Footer";
 import Error from "../../error/Error";
 import Questions from "../Questions";
+import PaginationCount from "../../categoriesComponents/PaginationCount";
 import { getTagQuestions } from "../../../../dataService/tagData";
 import styles from "../../../../../public/styles/categories.module.scss";
 
-async function getData(tagName){
+async function getData(tagName, page){
     try{
         console.log(tagName)
         const response = await getTagQuestions({ 
-            tags : [tagName]
+            tags : [tagName],
+            per_page: 12,
+            page: page ? page : 1,
+            order_by: "*",
+            order_type: "*",
+            sources: [
+                "*"
+            ],
+            marjas: [
+                "*"
+            ]
         });
-        // console.log(response)
         return response.data;
     }
     catch(err){
@@ -25,22 +32,27 @@ async function getData(tagName){
     }
 }
 
-function Tag({ params }) {
-
+function Tag({ params, searchParams }) {
+    console.log(searchParams)
+    const { page } = searchParams;
     const decoded = decodeURIComponent(params.tag);
-    const data = use(getData(decoded.replaceAll("-", " ")));
+    const data = use(getData(decoded.replaceAll("-", " "), page ) );
 
     return (
         <>
             <div className="mainContentContainer">
                 <Header />
                 <div className={styles["tag-mainContent"]}>
-                    <TagAside />
+                    <TagAside tag={decoded.replaceAll("-", " ")}/>
                     {
                         data? 
-                            <Questions data={data}/>
+                            <div>
+                                <Questions data={data[0].users}/>
+                                <PaginationCount oneQuery={true} path={`/tags/${decoded}`} pageItems={12} currentPage={page ? page : 1 } totalCount={data[0].meta.total_count} />
+                            </div>
                             : <Error />
                     }
+                   
                 </div>
             </div>
             <Footer/>

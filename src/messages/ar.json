@@ -11,7 +11,17 @@
         "signup" : "عضوية",
         "advancedSearch" : "البحث المتقدم",
         "installBtn" : "قم بتثبيت التطبيق",
-        "searchInput" : "سؤال البحث عن طريق الكلمة الرئيسية"
+        "searchInput" : "سؤال البحث عن طريق الكلمة الرئيسية",
+        "allWords" : "جميع التعبيرات",
+        "nonWords" : "لا شيء من العبارات",
+        "anyWords" : "مع واحد على الأقل من التعبيرات",
+        "betweenLanguages" : "بين اللغات",
+        "sources" : "من بين المصادر",
+        "marjas" : "من بين المراجع",
+        "betweenTags" : "بين العلامات",
+        "applyFilter" : "تطبيق الفلتر",
+        "multiSelect" : "يختار",
+        "noMoreOptions" : "لا مزيد من الخيارات"
     }, 
     "footer" : {
         "title" : "بارسا",
@@ -52,5 +62,21 @@
         "introDownload" : "تحميل أحدث إصدار من تطبيق بارسا",
         "adsContainer":"ضع إعلاناتك",
         "join" : ""
+    },
+    "question" : {
+        "rate" : "نتيجة",
+        "view" : "يزور",
+        "answer" : "إجابة",
+        "readTime" : "وقت الدراسة : ",
+        "answers" : "الاجابات",
+        "comments" : "تعليقات",
+        "similarQuestions" : "أسئلة مماثلة",
+        "recommandedQuestion" : "الأسئلة المقترحة",
+        "cancel": "انسحب",
+        "submit" : "سِجِلّ",
+        "answering" : "سجل الجواب",
+        "name" : "اسم",
+        "phone" : "التليفون",
+        "enterAnswer" : "أدخل إجابتك هنا"
     }
 }

@@ -1,8 +1,8 @@
 
 import React from "react";
 import AnswerQuestion from "../../../../questionComponents/AnswerQuestion";
+import RecommandedQuestion from "../../../../questionComponents/RecommandedQuestion";
 import RelatedQuestions from "../../../../questionComponents/RelatedQuestions";
-import LastQuestions from "../../../../questionComponents/LastQuestions";
 import QuestionItem from "../../../../categoriesComponents/QuestionItem";
 import styles from "../../../../../../../public/styles/question.module.scss";
 
@@ -48,7 +48,7 @@ function Question() {
                             <button className={styles["newQuestionBtn"]}>پرسش جدید</button>
                         </div>
                         <RelatedQuestions />
-                        <LastQuestions />
+                        <RecommandedQuestion />
                     </div>
                 </div>
 

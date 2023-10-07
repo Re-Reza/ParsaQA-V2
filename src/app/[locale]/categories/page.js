@@ -1,4 +1,3 @@
-
 export const metadata = {
     title: 'دسته بندی ها',
 }
@@ -14,7 +13,6 @@ import styles from "../../../../public/styles/categories.module.scss";
 
 function Categories() {
 
-
     return (
         <>
             <div className="mainContentContainer">
@@ -26,7 +24,7 @@ function Categories() {
 
                     <div className={styles["mainContainer"]}>
                         <CategoryAside />
-                        <MainContent isCategory={true}/>
+                        {/* <MainContent isCategory={true}/> */}
                     </div>
 
                 </div>

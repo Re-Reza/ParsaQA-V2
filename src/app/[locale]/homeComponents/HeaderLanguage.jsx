@@ -36,7 +36,7 @@ function HeaderLanguage(){
     })
 
     return(
-        <div>
+        <div className="position-relative">
             <div onClick={()=> setState({...state, open: !state.open})} className="d-flex align-items-center ms-1 ms-sm-4" role="button">
                 <span className="me-1 fs-3"> <MdKeyboardArrowDown/> </span>
                 <span className="me-1 me-1 d-none d-sm-block">{languages[activeLang].title}</span>

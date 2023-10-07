@@ -24,7 +24,7 @@ function Questions(props) {
 
             <ul>
                 {
-                    props.data[0].map((item, index) => <QuestionItem tag={true} key={index} item={item} /> )
+                    props.data.map((item, index) => <QuestionItem tag={true} key={index} item={item} /> )
                 }
             </ul> 
         </div>

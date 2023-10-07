@@ -23,18 +23,10 @@ function Questions(props) {
         { title : t("mostVisited")}
     ];
 
-    // const questionList = [
-    //     { topic: "برای مدیریت خود برتربینی در خود و دیگران، چه راهکاری مناسب است؟", tags: ["روانشناسی", "خود برتربینی", "اخلاق و تربیت اسلامی"], user: "@Rasekhoon ", vots: 10, views: 2, answers: 1 , time: 2  },
-    //     { topic: "برای مدیریت خود برتربینی در خود و دیگران، چه راهکاری مناسب است؟", tags: ["روانشناسی", "خود برتربینی", "اخلاق و تربیت اسلامی"], user: "@Rasekhoon ", vots: 10, views: 2, answers: 1 , time: 2  },
-    //     { topic: "برای مدیریت خود برتربینی در خود و دیگران، چه راهکاری مناسب است؟", tags: ["روانشناسی", "خود برتربینی", "اخلاق و تربیت اسلامی"], user: "@Rasekhoon ", vots: 10, views: 2, answers: 1 , time: 2  },
-    //     { topic: "برای مدیریت خود برتربینی در خود و دیگران، چه راهکاری مناسب است؟", tags: ["روانشناسی", "خود برتربینی", "اخلاق و تربیت اسلامی"], user: "@Rasekhoon ", vots: 10, views: 2, answers: 1 , time: 2  },
-    //     { topic: "برای مدیریت خود برتربینی در خود و دیگران، چه راهکاری مناسب است؟", tags: ["روانشناسی", "خود برتربینی", "اخلاق و تربیت اسلامی"], user: "@Rasekhoon ", vots: 10, views: 2, answers: 1 , time: 2  }
-    // ];
-
     const questionList = props.data.length > 6 ? props.data.slice(0, 6) :  props.data;
 
     return (
-        <section >
+        <section>
 
             <div className="d-flex justify-content-between fs-rsp w-100">
                 <div data-aos="fade-left" data-aos-duration="1000"  data-aos-delay="400" className="txt-c-large txt-large2 txt-gray3">{t("dailyQuestions")}</div>

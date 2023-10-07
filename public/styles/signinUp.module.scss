@@ -46,3 +46,7 @@
     opacity: 0;
     transition: .3s all;
 }
+.formContainer{
+    position: relative;
+    z-index: 10;
+}
