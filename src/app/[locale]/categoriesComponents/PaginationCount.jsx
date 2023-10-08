@@ -27,7 +27,7 @@ function PaginationCount({ totalCount, currentPage, pageItems, path, oneQuery })
                 <li key={next+=1} className={styles["paginationItem"]}>
                     ...
                 </li>  
-                <li key={next+=2} onClick={ ()=>navigateTopage(totalPage)} className={styles["paginationItem"]+" "+( totalPage == parsedCurrentPage ? styles["paginationItemActive"] : "")}>
+                <li key={next+=2}  onClick={ ()=>navigateTopage(totalPage)} className={styles["paginationItem"]+" "+( totalPage == parsedCurrentPage ? styles["paginationItemActive"] : "")}>
                     {totalPage}
                 </li> 
             </>
@@ -40,7 +40,7 @@ function PaginationCount({ totalCount, currentPage, pageItems, path, oneQuery })
             <ul className={styles["paginationList"]}>
                 {
                     totalPage > 1 && parsedCurrentPage != 1 ? 
-                    <li key={"prevPage"} onClick={ ()=>navigateTopage( parsedCurrentPage-1 )} className={ styles["paginationItem"]+ " txt-c-large" }>
+                    <li key={"prevPage"}  onClick={ ()=>navigateTopage( parsedCurrentPage-1 )} className={ styles["paginationItem"]+ " txt-c-large" }>
                         <RiArrowLeftSLine />
                     </li> 
                     : <></>
@@ -48,7 +48,7 @@ function PaginationCount({ totalCount, currentPage, pageItems, path, oneQuery })
                 {pages}
                 {
                     totalPage > 1 && parsedCurrentPage != totalPage ?
-                    <li key={"nextPage"} onClick={ ()=>navigateTopage( parsedCurrentPage+1 )} className={ styles["paginationItem"]+ " txt-c-large" }>
+                    <li key={"nextPage"}  onClick={ ()=>navigateTopage( parsedCurrentPage+1 )} className={ styles["paginationItem"]+ " txt-c-large" }>
                         <RiArrowRightSLine />
                     </li> 
                     : <></>

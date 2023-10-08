@@ -97,9 +97,12 @@
 // ---------------------------------- pagination ----------------------------------
 .paginationList{
     display: flex;
+
     justify-content: end;
+    flex-wrap: wrap;
     flex-direction: row-reverse;
     align-items: center;
+
 }
 .paginationItem{
     background-color: #fff;

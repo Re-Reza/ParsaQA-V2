@@ -1,7 +1,7 @@
 "use client"
 import React, { useRef, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { useAudioRecorder } from "react-audio-voice-recorder";
+import { useParams, useRouter } from "next/navigation";
+import { useAudioRecorder, AudioRecorder } from "react-audio-voice-recorder";
 import { BiMicrophone } from "react-icons/bi"; 
 import { BsRecord2 } from "react-icons/bs";
 import { voiceSearch } from "../../../dataService/searchData";
@@ -18,25 +18,44 @@ export default function VoiceRecorder(){
 
     const modeRef = useRef(null);
     const params = useParams();
+    const { push } = useRouter();
 
     useEffect(() => {
         if (!recordingBlob) return;
         // console.log(recordingBlob);
-        const audioFile = new File([recordingBlob], "audio.webm", {
+        console.log(recordingBlob)
+        const blobObj = {
+            size : recordingBlob.size,
+            type  : recordingBlob.type
+        }
+        const audioFile = new File([blobObj], "out.webm", {
             type: "audio/webm"
         });
-        // console.log(audioFile)
-        const formData = new FormData();
-        formData.append("file", audioFile );
+        // const formData = new FormData();
+        // formData.append("file", audioFile );
         // console.log(formData.get("file"));
-        voiceSearch({
-            voice : formData.get("file"),
-            language : params.locale
-        }).then( response => {
-            console.log(response)
-        }).catch( err => {
-            console.log(err);
-        });
+        console.log(audioFile)
+        const fileObj = {
+            lastModified : audioFile.lastModified,
+            lastModifiedDate : audioFile.lastModifiedDate,
+            name : audioFile.name,
+            size : audioFile.size,
+            type : audioFile.type,
+            webkitRelativePath : audioFile.webkitRelativePath
+        }
+        // console.log(fileObj);
+        // console.log(JSON.stringify(fileObj))
+        push(`/search/audio?audioF=${JSON.stringify(blobObj)}`);
+        // voiceSearch({
+        //     voice : audioFile,
+        //     language : params.locale
+        // }).then( response => {
+        //     console.log(JSON.stringify(audioFile))
+        //     const params = JSON.stringify(recordingBlob);
+        //     push(`/search/${params}?isAudio=1`);
+        // }).catch( err => {
+        //     console.log(err);
+        // });
 
     }, [recordingBlob]);
     
@@ -53,7 +72,7 @@ export default function VoiceRecorder(){
             modeRef.current.classList.add(styles["recordMode-show"]);
         }
     }
-
+    
     return (
         <div>
             <button onClick={callRecorder} className={styles["filterButton"] + " ms-2 txt-c-large txt-darkBlue txt-c-nomal"}>

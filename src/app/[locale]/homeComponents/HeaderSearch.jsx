@@ -54,7 +54,6 @@ function HeaderSearch(props) {
             const sourcesData = (await provideAllSources()).data;
             const marjasData = (await provideMarjas()).data;
             const tagsData = (await provideAllTags()).data;
-            console.log(sourcesData)
             setState({
                 ...state,
                 tags : tagsData.data,
@@ -87,18 +86,18 @@ function HeaderSearch(props) {
 
     const { push } = useRouter();
     function searchRequest(){
+        console.log("in this")
         const inputValue = searchInput.current.value.replaceAll(" ", "-");
         console.log(isAdvanced)
         if( isAdvanced )
         {
-            console.log("configuring")
             if(inputValue.trim() != "" && inputValue != null ) {
-                push(`/search?isAdvanced=1&q=${inputValue}&tags=${state.tags}&langs=${langs}&sources=${sources}&all_words=${all_words}&marjas=${marjas}&any_words=${any_words}&all_words=${all_words}&non_words=${non_words}`);
+                push(`/search/${inputValue}?isAdvanced=1&tags=${state.tags}&langs=${langs}&sources=${sources}&all_words=${all_words}&marjas=${marjas}&any_words=${any_words}&all_words=${all_words}&non_words=${non_words}`);
             }
         }
         else {
             if(inputValue.trim() != "" && inputValue != null ) {
-                push(`/search?q=${inputValue}`);
+                push(`/search/${inputValue}`);
             }
         }
     }
@@ -126,6 +125,7 @@ function HeaderSearch(props) {
                         recommendations : response.data
                     });
                 }).catch( err => {
+                    console.log(err)
                     setState({
                         ...state,
                         recommendations : []
@@ -138,6 +138,7 @@ function HeaderSearch(props) {
 
     const fillInput = (value) => {
         searchInput.current.value = value;
+        searchRequest();
         setState({
             ...state,
             recommendations : []
@@ -155,7 +156,7 @@ function HeaderSearch(props) {
                             <button onClick={ ()=> { setState({...state, showFilters : !state.showFilters})}} title="نمایش فیلتر ها" className="text-white txt-c-large txt-large me-4">{ state.showFilters ? <IoIosArrowUp/> : <IoIosArrowDown/>}</button>
                             <div className={styles["header-inputSearchContainer"]+" w-100 d-flex justify-content-between align-items-center"}>
                                 <div className="w-100 d-flex position-relative align-items-center">
-                                    <span className="me-2 txt-c-large" role="button"><BsSearch /></span>
+                                    <button onClick={searchRequest} className="me-2 txt-c-large" role="button"><BsSearch /></button>
                                     <input onKeyUp={getRecommendations} ref={searchInput} style={{ width : "90%"}} className={styles["input"]} placeholder={t("searchInput")} type="text" />
                                     <ul className={styles["recommandation"]+ ( state.recommendations.length > 0 ? " "+styles["showRecommand"] : "" ) }>
                                     {

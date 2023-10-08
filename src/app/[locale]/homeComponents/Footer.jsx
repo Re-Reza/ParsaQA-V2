@@ -84,7 +84,7 @@ function Footer(props) {
 
                 </div>
 
-                <div className={styles["footer-annotation"]}>{t("footerAnnotation")}</div>
+                <div className={styles["footer-annotation"]+" lh-base"}>{t("footerAnnotation")}</div>
 
             </footer>
         </>

@@ -28,12 +28,12 @@ function QuestionItem(props) {
 
     return ( 
         <li className={styles["questionItem"]} >
-            <div className="me-4 d-flex flex-column justify-content-center">
+            <div className=" ms-4 d-flex flex-column justify-content-center">
                 <div className="mb-2 txt-gray3 w-mx-content">
                     <span className="mb-3 me-3 txt-large2" ><MdHowToVote /></span>
                     <span >{t("rate")} { sum_votes || 0}</span>
                 </div>
-                <div className="mb-2 3 w-mx-content">
+                <div className="mb-2 w-mx-content">
                     <span className="mb-3 me-3 txt-large2"><BsEyeFill /></span>
                     <span className="txt-muted">{t("view")}  { sum_visits || 0} </span>
                 </div>
@@ -64,7 +64,7 @@ function QuestionItem(props) {
                             <span role="button" className="txt-c-large txt-muted ms-1"><BsBookmark /></span>
                         </div>
                         <div className="d-flex align-items-center hover-lightBlue">
-                            <Link target="_blank" href={"https://"+(props.isSearch || props.tag ? source.url : source.link )}>
+                            <Link F href={"https://"+(props.isSearch || props.tag ? source.url : source.link )}>
                                 <span className="lh-base">{ props.isSearch || props.tag ? (  locale == "en" ? source.english_name : source.persian_name ) : ( locale == "en" ? source.translates.en : source.translates.fa ) }</span>
                             </Link>
                         </div>

@@ -72,8 +72,41 @@
     line-height: 1.1;
     background-color: var(--skyBlue);
 }
+.questionSource{
+    border-radius: 6px;
+    border: var(--darkBlue) 1px solid; 
+    text-align: center;
+    line-height: 1.2;
+    padding: 1em;
+    margin-top: 1em;
+}
+.answerItem{
+    display: flex;
+}
 @media only screen and (max-width : 800px) {
 	.contentContainer{
         grid-template-columns: 1fr;
+    }
+    .QuestionContent{
+        order: 1;
+    }
+}
+@media only screen and (max-width : 650px) {
+	.contentContainer{
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width : 525px) {
+    .contentContainer{
+        font-size: 12px;
+    }
+	.optionContainer{
+        flex-direction: column;
+    }
+    .tagsContainer{
+        margin-bottom: 1em;
+    }
+    .questionBox{
+        padding: .7em;
     }
 }

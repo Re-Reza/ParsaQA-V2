@@ -33,7 +33,7 @@ async function getData(tagName, page){
 }
 
 function Tag({ params, searchParams }) {
-    console.log(searchParams)
+    // console.log(searchParams)
     const { page } = searchParams;
     const decoded = decodeURIComponent(params.tag);
     const data = use(getData(decoded.replaceAll("-", " "), page ) );
@@ -41,7 +41,7 @@ function Tag({ params, searchParams }) {
     return (
         <>
             <div className="mainContentContainer">
-                <Header />
+                <Header lang={params.locale}/>
                 <div className={styles["tag-mainContent"]}>
                     <TagAside tag={decoded.replaceAll("-", " ")}/>
                     {

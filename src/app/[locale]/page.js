@@ -37,14 +37,14 @@ async function getCategoriesData(){
 }
 
 export default function Home({ params : { locale }}) {
-    // const serverData = use(getQuestionsData(locale));
-    // const categories = ( use(getCategoriesData()) );
+    const serverData = use(getQuestionsData(locale));
+    const categories = ( use(getCategoriesData()) );
 
     return (
         <>
             <main className="mainContentContainer">
                 <Header lang={locale} />
-                {/* <div className="home-questionContainer">
+                <div className="home-questionContainer">
                     {
                         serverData ? 
                         <Questions data={serverData.data}/>
@@ -57,7 +57,7 @@ export default function Home({ params : { locale }}) {
                             <Aside data={categories.data}/> : <></>
                         }
                     </aside>
-                </div> */}
+                </div>
                 <Introduction />
                 {/* <OurTeam /> */}
             </main>

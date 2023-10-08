@@ -18,7 +18,6 @@ import styles from "../../../../public/styles/headerFooter.module.scss";
 function Header(props) {
 
     const pathname = usePathname();
-    console.log(pathname)
     const t = useTranslations("header");
     const { locale } = useParams();
 
@@ -72,14 +71,14 @@ function Header(props) {
                             <ul className={styles["mobileLinks"]}>
                             {
                                 links.map((item, index) => <li className={styles["mobileLinks-item"]} key={index}>
-                                        <div style={{padding : ".5em 1em"}} className={ pathList.includes(item.path) ? styles["activeLink-mobile"] : ""}><Link href={item.path}>{item.title}</Link></div>
+                                        <div style={{padding : ".5em 1em"}} className={ pathList.includes(item.path) ? styles["activeLink-mobile"] : ""}><Link href={"/"+item.path}>{item.title}</Link></div>
                                     </li>)
                                 }
                             </ul> : <></>
                         }
                     </div>
 
-                    <div className="d-flex align-items-center position-relative">
+                    <div className="d-flex justify-content-center flex-wrap align-items-center position-relative">
                         {/* <button className={styles["installBtnMobile"]}><IoDownloadOutline/></button> */}
                         <button className={styles["installBtn"]+ " me-3"}><span className="txt-c-large me"><IoDownloadOutline/></span> <span className={styles["installText"]}>{t("installBtn")}</span></button>
                         <div className="txt-darkBlue txt-c-normal lh-base text-center" style={{ paddingBottom : ".4em" }}>

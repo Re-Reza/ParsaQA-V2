@@ -3,14 +3,36 @@ import AnswerQuestion from "../../questionComponents/AnswerQuestion";
 import RecommandedQuestion from "../../questionComponents/RecommandedQuestion";
 import RelatedQuestions from "../../questionComponents/RelatedQuestions";
 import QuestionContent from "../../questionComponents/QuestionContent";
-import { getQuestionContent } from "../../../../dataService/questionData";
+import { getQuestionContent, provideSimilarQuestions } from "../../../../dataService/questionData";
+import { getLastQuestions } from "../../../../dataService/homeData";
 import Error from "../../error/Error";
 import styles from "../../../../../public/styles/question.module.scss";
 
 async function getQestionData(id){
     try{
         const responseData = (await getQuestionContent(id)).data;
-        console.log(responseData);
+        return responseData;
+    }
+    catch(err) {
+        // console.log(err)
+        return null;
+    }
+}
+
+async function getRecommendedQuestions(language){
+    try{
+        const responseData = (await getLastQuestions(language)).data;
+        return responseData;
+    }
+    catch(err) {
+        // console.log(err)
+        return null;
+    }
+}
+
+async function getSimilarQuestions(id){
+    try{
+        const responseData = (await provideSimilarQuestions(id)).data;
         return responseData;
     }
     catch(err) {
@@ -21,26 +43,28 @@ async function getQestionData(id){
 
 function Question({ params }){
     const responseData = use( getQestionData(params.question) );
-    
+    const recommendedQuestion = use( getRecommendedQuestions(params.locale) );
+    const similarQuestion = use( getSimilarQuestions(params.question) );
+
     return (
         <div className="mt-4">
 
             <div className={styles["contentContainer"]}>
-                <div>
+                <div className={styles["QuestionContent"]}>
                     {
                         responseData ? 
-                        <div className="mb-4">
-                            <QuestionContent locale={params.locale} data={responseData.data} />
+                        <div className={"mb-4"}>
+                            <QuestionContent data={responseData.data} />
                         </div>
                         : 
                         <Error/>
                     }
-                    <AnswerQuestion />
+                    <AnswerQuestion id={params.question}/>
                 </div>
 
                 <div>
-                    <RelatedQuestions />
-                    <RecommandedQuestion />
+                    { similarQuestion ? <RelatedQuestions data={similarQuestion} /> : <></>}
+                    { recommendedQuestion ? <RecommandedQuestion data={recommendedQuestion} /> : <></>}
                 </div>
 
             </div>
