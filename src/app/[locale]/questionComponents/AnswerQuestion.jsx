@@ -20,7 +20,7 @@ function AnserQuestion(props){
         const text = textRef.current.value;
         if( name == "" || phone == "" || text == "")
         {
-            toast.error("لطفا همه اطلاعات را وارد کنید")
+            toast.error("لطفا همه فیلدها را پر کنید")
         }
         else{
             answerQuestion(props.id, {

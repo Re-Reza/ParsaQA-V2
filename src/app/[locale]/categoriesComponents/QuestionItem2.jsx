@@ -11,7 +11,7 @@ import styles from "../../../../public/styles/categories.module.scss";
 
 // this component is made for key name of api data
 function QuestionItem(props) {
-
+    
     const { id, content, created_at, language, tags, title, answers, sum_votes, user, question, answer, source, sum_visits } = props.item;
     const { locale } = useParams();
     function generateLink(link){
@@ -45,7 +45,7 @@ function QuestionItem(props) {
 
             <div style={{ width: "87%" }} className="d-flex flex-column justify-content-between">
                 <div className="d-flex justify-content-between txt-muted hover-lightBlue">
-                    <Link href={`/questions/${id}`} className="txt-c-normal txt-gray3 lh-base" style={{ maxWidth: "86%" }}>{props.tag || props.isSearch ? question : title}</Link>
+                    <Link href={`/questions/${id}?isOld=${props.isOld == true ? 1 : 0}`} className="txt-c-normal txt-gray3 lh-base" style={{ maxWidth: "86%" }}>{props.tag || props.isSearch ? question : title}</Link>
                 </div>
                 {/* {
                     props.isAnswer == true ? <p className="txt-gray3 mt-4 lh-lg">{answerTxt}</p> : <></>
@@ -64,7 +64,7 @@ function QuestionItem(props) {
                             <span role="button" className="txt-c-large txt-muted ms-1"><BsBookmark /></span>
                         </div>
                         <div className="d-flex align-items-center hover-lightBlue">
-                            <Link F href={"https://"+(props.isSearch || props.tag ? source.url : source.link )}>
+                            <Link href={"https://"+(props.isSearch || props.tag ? source.url : source.link )}>
                                 <span className="lh-base">{ props.isSearch || props.tag ? (  locale == "en" ? source.english_name : source.persian_name ) : ( locale == "en" ? source.translates.en : source.translates.fa ) }</span>
                             </Link>
                         </div>

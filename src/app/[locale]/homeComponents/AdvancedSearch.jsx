@@ -8,8 +8,8 @@ import { useTranslations } from "next-intl";
 // import Form from "react-bootstrap/Form";
 import styles from "../../../../public/styles/headerFooter.module.scss";
 
-function AdvancedSearch({ tags, sources, marjas, setAdvandedSeacrhData}){
-
+function AdvancedSearch({ tags, sources, marjas, setAdvandedSeacrhData, lang }){
+console.log(sources);
     const [ state, setState ] = useState({
         allWords: [],
         nonWords : [],
@@ -30,6 +30,8 @@ function AdvancedSearch({ tags, sources, marjas, setAdvandedSeacrhData}){
             [key] : newData
         });
     }
+
+    const transformedSources = sources.map(item => ({ title : item.translates[lang] }) );2
 
     function removeItem(rItem, key){
         const filteredList = state[key].filter( item => item !== rItem)
@@ -225,7 +227,7 @@ function AdvancedSearch({ tags, sources, marjas, setAdvandedSeacrhData}){
                             onKeyPressFn={function noRefCheck(){}}
                             onRemove={(item)=>toggleItem(item, "selectedSources")}
                             onSelect={(item)=>toggleItem(item, "selectedSources")}
-                            options={sources}
+                            options={transformedSources}
                         />
                     </div>
                 </div> 

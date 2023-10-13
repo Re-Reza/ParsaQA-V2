@@ -39,10 +39,10 @@ function RecommandedQuestion(props) {
             <div className={styles["lastQuestionList"]} >
                 <ul style={ {maxHeight : "600px", overflowY: "auto" } } >
                     {
-                        props.data.data.slice(0, state ? props.data.data.length : 5).map((item, index) =><li key={index} className="txt-gray txt-gray3 txt-c-normal lh-base mb-3 hover-lightBlue"> <Link  href={`/questions/${item.id}`}>{item.title}</Link></li>)
+                        props.data.data.slice(0, state ? props.data.data.length : 5).map((item, index) =><li key={index} className="txt-gray txt-gray3 txt-c-normal lh-base mb-3 hover-lightBlue"> <Link  href={`/questions/${item.id}?isOld=0`}>{item.title}</Link></li>)
                     }
                 </ul>
-                <div onClick={ () => setState( !state ) } className="text-center mt-4 txt-lightBlue" role="button">{ state ? "بستن" : "ادامه سوالات"}</div>
+                <div onClick={ () => setState( !state ) } className="text-center mt-4 txt-lightBlue" role="button">{ state ? t("close") :  t("moreQuestion") }</div>
             </div>
         </div>
     )

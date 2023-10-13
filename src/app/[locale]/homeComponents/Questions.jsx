@@ -16,12 +16,12 @@ function Questions(props) {
 
     const  t = useTranslations("home");
 
-    const filters = [
-        { title : t("suggested")},
-        { title : t("hot")},
-        { title : t("answerless")},
-        { title : t("mostVisited")}
-    ];
+    // const filters = [
+    //     { title : t("suggested")},
+    //     { title : t("hot")},
+    //     { title : t("answerless")},
+    //     { title : t("mostVisited")}
+    // ];
 
     const questionList = props.data.length > 6 ? props.data.slice(0, 6) :  props.data;
 
@@ -30,19 +30,19 @@ function Questions(props) {
 
             <div className="d-flex justify-content-between fs-rsp w-100">
                 <div data-aos="fade-left" data-aos-duration="1000"  data-aos-delay="400" className="txt-c-large txt-large2 txt-gray3">{t("dailyQuestions")}</div>
-                <ul className={styles["filtersContainer"]}>   
+                {/* <ul className={styles["filtersContainer"]}>   
                     {
                         filters.map((item, index) => <li key={index} role="button" className={styles["filterItem"]}>
                             {item.title}
                         </li>)
                     }
-                </ul>
+                </ul> */}
             </div>
 
             <ul className="mt-5">
                 {
-                    questionList.map((item, index) => <div data-aos="fade-up" data-aos-delay={(index+1*100)} data-aos-duration="800">
-                        <QuestionItem item={item} key={index} />
+                    questionList.map((item, index) => <div key={index} data-aos="fade-up" data-aos-delay={(index+1*100)} data-aos-duration="800">
+                        <QuestionItem item={item} />
                     </div>)
                 }
             </ul>

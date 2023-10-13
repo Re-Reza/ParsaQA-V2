@@ -132,62 +132,64 @@ function QuestionContent(props) {
 
                 <h3 className="mb-3 txt-gray3 txt-large2 txt-c-large mt-5">
                     {t("answers")}&nbsp;
-                    ({answers.data.length})
+                    ({answers ? answers.data.length : 0})
                 </h3>
+                
+                {
+                    answers?
+                <div className={styles["questionContent-answer"]+" mt-4"}>
+                       
+                        <ul>
+                        {
+                            answers.data.map((item, index) => <li className={styles["answerItem"]} key={index}>
+                                <div className="me-1 me-sm-2 me-md-3">
+                                    <div className="d-flex flex-column align-items-center mb-4">
+                                        <button className="txt-c-large txt-large2" onClick={()=>callVoteAnswer(item.id, 1)}><BiUpvote/></button>
+                                        <div className="d-flex mt-3 mb-3"> <span>{t("rate")}</span>&nbsp;&nbsp;<span>{state.modified.id == item.id ? item.sum_votes + state.modified.weight : item.sum_votes }</span> </div>
+                                        <button className="txt-c-large txt-large2" onClick={()=>callVoteAnswer(item.id, -1)}><BiDownvote/></button>
+                                    </div>
 
-                <div className={styles["questionContent-answer"]}>
-                    
-                    <ul>
-                    {
-                        answers.data.map((item, index) => <li className={styles["answerItem"]} key={index}>
-                            <div className="me-1 me-sm-2 me-md-3">
-                                <div className="d-flex flex-column align-items-center mb-4">
-                                    <button className="txt-c-large txt-large2" onClick={()=>callVoteAnswer(item.id, 1)}><BiUpvote/></button>
-                                    <div className="d-flex mt-3 mb-3"> <span>{t("rate")}</span>&nbsp;&nbsp;<span>{state.modified.id == item.id ? item.sum_votes + state.modified.weight : item.sum_votes }</span> </div>
-                                    <button className="txt-c-large txt-large2" onClick={()=>callVoteAnswer(item.id, -1)}><BiDownvote/></button>
-                                </div>
+                                    <div className="d-flex">
+                                        <span className="me-1"><AiOutlineEye/></span>
+                                        <span className="oneLineText">{item.sum_visits || 0 } {t("view")}</span>
+                                    </div>
 
-                                <div className="d-flex">
-                                    <span className="me-1"><AiOutlineEye/></span>
-                                    <span className="oneLineText">{item.sum_visits || 0 } {t("view")}</span>
-                                </div>
-
-                                <div className={styles["questionSource"]}>
-                                    <Link className="hover-lightBlue" target="_blank" href={"https://"+item.source.link}>{locale == "en" ? item.source.translates.en : item.source.translates.fa }</Link>
-                                </div>
-                            </div>
-
-                            <div className="w-100">
-
-                                <div className="d-flex flex-columns justify-content-between ">
-                                    <p className="txt-gray3 fw-500 lh-base">{item.content}</p>
-                                    <div className="mt-5">
-                                        <span className="txt-muted">{moment(item.created_at).local(locale).format("YYYY/MM/DD")}</span>
+                                    <div className={styles["questionSource"]}>
+                                        <Link className="hover-lightBlue" target="_blank" href={"https://"+item.source.link}>{locale == "en" ? item.source.translates.en : item.source.translates.fa }</Link>
                                     </div>
                                 </div>
-                                
-                                {/* <div>
-                                    <h6>
-                                        {t("comments")}
-                                        ({item.comments.data.length})
-                                    </h6>
-                                    <ul>
-                                        {
-                                            item.comments.data.map((item, index) => <li key={index}>
-                                                <div></div>
-                                                <div></div>
-                                            </li>)
-                                        }
-                                    </ul>
-                                </div> */}
 
-                            </div>
+                                <div className="w-100">
 
-                        </li>)
-                    }
-                    </ul>
-                </div>
+                                    <div className="d-flex flex-columns justify-content-between ">
+                                        <p className="txt-gray3 fw-500 lh-base">{item.content}</p>
+                                        <div className="mt-5">
+                                            <span className="txt-muted">{moment(item.created_at).local(locale).format("YYYY/MM/DD")}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    {/* <div>
+                                        <h6>
+                                            {t("comments")}
+                                            ({item.comments.data.length})
+                                        </h6>
+                                        <ul>
+                                            {
+                                                item.comments.data.map((item, index) => <li key={index}>
+                                                    <div></div>
+                                                    <div></div>
+                                                </li>)
+                                            }
+                                        </ul>
+                                    </div> */}
 
+                                </div>
+
+                            </li>)
+                        }
+                        </ul>
+                </div> :<></>
+                }
             </div>
         </>
     )

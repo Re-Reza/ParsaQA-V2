@@ -12,3 +12,16 @@
     grid-row-gap: 40px;
     margin-top: 6em;
 }
+.stayInTouchBox{
+    width: 100%;
+    padding: 1.3em;
+    background: linear-gradient(90deg, rgba(193, 200, 228, 0.70) 0%, rgba(132, 206, 235, 0.70) 0.01%, rgba(136, 96, 208, 0.70) 100%);
+    border-radius: 15px;
+    margin-top: 2em;
+    text-align: center;
+}
+@media only screen and (max-width : 600px) {
+	.title{
+        font-size: 1.4em;
+	}
+}

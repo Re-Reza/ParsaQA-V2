@@ -68,7 +68,7 @@ function MainContent(props) {
 
             <ul>
                 {
-                    props.data.map((item, index) => <QuestionItem isSearch={true} key={index} item={item} />)
+                    props.data.map((item, index) => <QuestionItem isOld={true} isSearch={true} key={index} item={item} />)
                 }
             </ul> 
         </section>

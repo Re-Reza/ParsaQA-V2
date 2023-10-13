@@ -19,7 +19,7 @@ export function provideAllTags(){
 }
 
 export function advancedSearch(data){
-    return axiosInastance.post()
+    return axiosInastance.post("search/advance", data);
 }
 
 export function autoComplete( data ){
@@ -27,7 +27,6 @@ export function autoComplete( data ){
 }
 
 export function voiceSearch(data) {
-    console.log(data);
     return axiosInastance.post("search/voice", data, {
         headers : { 
             "content-type": "multipart/form-data",

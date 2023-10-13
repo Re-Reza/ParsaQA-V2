@@ -180,13 +180,16 @@ select {
 	background-color: var(--darkBlue) !important;
 }
 .oneLineText{
-	white-space : nowrap;
+	white-space : nowrap ;
 }
 // ------------------------------------- multi select ---------------------------------- 
 .search-wrapper{
 	border: none !important;
 	display: flex;
     flex-direction: column-reverse;
+}
+.chip{
+	white-space: break-spaces !important;
 }
 .chip:last-of-type{
 	margin-top: 1em;
@@ -210,7 +213,7 @@ select {
 	grid-column-gap: 30px;
 	margin-top: 2.4em;
 	position: relative;
-	z-index: 9;
+	z-index: 3;
 }
 .w-mx-content{
 	width: max-content;

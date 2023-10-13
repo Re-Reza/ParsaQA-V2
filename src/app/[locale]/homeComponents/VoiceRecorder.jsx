@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useAudioRecorder, AudioRecorder } from "react-audio-voice-recorder";
 import { BiMicrophone } from "react-icons/bi"; 
 import { BsRecord2 } from "react-icons/bs";
-import { voiceSearch } from "../../../dataService/searchData";
+// import { voiceSearch } from "../../../dataService/searchData"
 import styles from "../../../../public/styles/headerFooter.module.scss";
 
 export default function VoiceRecorder(){
@@ -22,41 +22,42 @@ export default function VoiceRecorder(){
 
     useEffect(() => {
         if (!recordingBlob) return;
-        // console.log(recordingBlob);
-        console.log(recordingBlob)
+
         const blobObj = {
             size : recordingBlob.size,
             type  : recordingBlob.type
         }
-        const audioFile = new File([blobObj], "out.webm", {
-            type: "audio/webm"
-        });
-        // const formData = new FormData();
-        // formData.append("file", audioFile );
-        // console.log(formData.get("file"));
-        console.log(audioFile)
-        const fileObj = {
-            lastModified : audioFile.lastModified,
-            lastModifiedDate : audioFile.lastModifiedDate,
-            name : audioFile.name,
-            size : audioFile.size,
-            type : audioFile.type,
-            webkitRelativePath : audioFile.webkitRelativePath
-        }
-        // console.log(fileObj);
-        // console.log(JSON.stringify(fileObj))
-        push(`/search/audio?audioF=${JSON.stringify(blobObj)}`);
+        // const audioFile = new File([blobObj], "out.webm", {
+        //     type: "audio/webm"
+        // });
         // voiceSearch({
         //     voice : audioFile,
         //     language : params.locale
         // }).then( response => {
-        //     console.log(JSON.stringify(audioFile))
-        //     const params = JSON.stringify(recordingBlob);
-        //     push(`/search/${params}?isAudio=1`);
+        //     console.log(response);
+        //     setState({
+        //         ...state,
+        //         data : response.data[0].users
+        //     });
+
         // }).catch( err => {
         //     console.log(err);
+        //     setState({
+        //         ...state,
+        //         data : null
+        //     })
         // });
-
+        // const fileObj = {
+        //     lastModified : audioFile.lastModified,
+        //     lastModifiedDate : audioFile.lastModifiedDate,
+        //     name : audioFile.name,
+        //     size : audioFile.size,
+        //     type : audioFile.type,
+        //     webkitRelativePath : audioFile.webkitRelativePath
+        // }
+    
+        push(`/search/audioSearch?audioF=${ JSON.stringify(blobObj) }`);
+   
     }, [recordingBlob]);
     
     let timer = null;

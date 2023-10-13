@@ -5,6 +5,10 @@ export function getQuestionContent(id){
     return axiosInastance.get(`questions/${id}`);
 }
 
+export function getQuestionContentOldId(id){
+    return axiosInastance.get(`old_questions/${id}`);
+}
+
 export function provideSimilarQuestions(id){
     return axiosInastance.get(`questions/${id}/similar`);
 }

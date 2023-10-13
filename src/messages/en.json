@@ -77,7 +77,25 @@
         "answering" : "answer",
         "name" : "name",
         "phone" : "phone number",
-        "enterAnswer" : "Enter your answer here"
+        "enterAnswer" : "Enter your answer here",
+        "moreQuestion" : "more questions",
+        "close" : "close"
+    },
+    "aboutUs" : {
+        "pageTitle" : "About us",
+        "description" : "Many people in the society are faced with various religious issues in their daily life, and it is sometimes impossible or time-consuming for them to get answers to these questions. Therefore, in the past years, several online systems have been prepared, which on the one hand, provide the people with the process of asking questions electronically, and on the other hand, provide the possibility of centralized response for reference offices and response centers. But these systems struggle with many problems which has a very bad effect on their services. Absence of a semantic search engine, intelligent question and answer system, answering the questions of the challenge, repeating the questions, the challenge of the mass tagging of the questions, the challenge of the writing and spelling mistakes of the users and even the experts answering the inappropriate and appropriate questions of the users...",
+        "description2" : "Parsa Group has made efforts in this field, including the following.",
+        "featureItem1" : "Find similar, related and repetitive questions", 
+        "featureItem2" : "Search engine for questions from all Islamic question and answer databases", 
+        "featureItem3" : "Automatic tagging of questions", 
+        "featureItem4" : "Question recommender systems", 
+        "featureItem5" : "Simplifying the text of the questions",
+        "featureItem6" : "Correct spelling mistakes in questions, answers and search text", 
+        "featureItem7" : "Finding answers to questions from the raw text of Islamic books", 
+        "featureItem8" : "Data labeling and data generation system",
+        "contactUs" : "Be in touch with us",
+        "headings" : "Questions and answers about the social network",
+        "parsa" : "Parsa"
     }
 }
 

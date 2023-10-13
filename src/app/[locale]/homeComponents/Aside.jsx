@@ -1,16 +1,8 @@
 "use client"
-import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import styles from "../../../../public/styles/home.module.scss";
-import { getHadis } from "../../../dataService/homeData";
-function Aside (props) {
 
-    const [ state, setState ] = useState({
-        hadis : {
-            autor : "امام علی (علیه السلام)",
-            text : "يا أباذَرٍّ، اِتَّقِ اللّه َ و لا تُرِ الناسَ أنَّكَ تَخشَى اللّه َ فَيُكرِمُوكَ و قَلبُكَ فاجِرٌ . اى ابوذر! از خدا بترس و در حالى كه دلى تبهكار دارى، براى جلب احترام مردم، نزد آنان خود را خدا ترس وانمود مكن ."
-        }
-    });
+function Aside (props) {
 
     const t = useTranslations("home");
 
@@ -24,22 +16,6 @@ function Aside (props) {
     //     { title : "اجتماعی سیاسی", img : "/imgs/political.png" },
     //     { title : "گوناگون", img : "/imgs/various.png" }
     // ]
-
-    // useEffect(() => {
-    //     getHadis().then( response => {
-    //         console.log(response);
-    //         setState({
-    //             ...state,
-    //             hadis : {
-    //                 autor : "",
-    //                 text : ""
-    //             }
-    //         })
-    //     }).catch(err => { 
-    //         console.log(err);
-    //     });
-
-    // }, []);
 
     const imgs = {
         "قرآن کریم" : "/imgs/quran.png" ,
@@ -69,10 +45,10 @@ function Aside (props) {
             <div>
                 <div className="txt-gray3 mb-4 txt-c-large" style={{fontSize: "1.4em"}}>{t("dailyHadis")}</div>
                 <div className={styles["hadisContainer"]}>
-                    <h5 className="text-center mb-3 txt-c-large">{state.hadis.autor}</h5>
+                    <h5 className="text-center mb-3 txt-c-large">{props.hadisData.author}</h5>
                     <p className="lh-lg">
                     {
-                        state.hadis.text
+                        props.hadisData.full_text
                     }
                     </p>
                 </div>

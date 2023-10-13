@@ -28,7 +28,7 @@ function Header(props) {
         { path: "", title: t("homeLink") },
         // { path: "/", title: t("productLink") },
         { path: "about-us", title: t("aboutUsLink") },
-        { path: "contact-us", title: t("cantactUsLink") }
+        // { path: "contact-us", title: t("cantactUsLink") }
     ];
 
     const [ state, setState ] = useState({
@@ -61,10 +61,10 @@ function Header(props) {
                                 links.map((item, index) => <li className={"me-3 fw-500 " + (pathList.includes(item.path) ? styles["active-link"] : "")} key={index}><Link href={"/"+item.path}>{item.title}</Link></li>)
                             }
                             
-                            <li className="position-relative">
+                            {/* <li className="position-relative">
                                 <Link className={"me-3 fw-500 " + ( pathList.includes("/categories") ? styles["active-link"] : "")} href="/categories">{t("categories")}</Link>
-                                {/* <HeaderCategory /> */}
-                            </li>
+                                <HeaderCategory />
+                            </li> */}
                         </ul>
                         {
                             state.showlinkMenu ? 
@@ -110,7 +110,7 @@ function Header(props) {
                             {t("titleP2")}
                         </h2>
                         {
-                            props.showSearch == false ? <></> : <HeaderSearch lang={props.lang} question={props.question} />
+                            props.showSearch == false ? <></> : <HeaderSearch lang={locale} question={props.question} />
                         }
                     </>
                 }

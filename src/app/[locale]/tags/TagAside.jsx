@@ -23,13 +23,13 @@ function TagAside(props){
             <div className="d-flex mb-4 align-items-center">
                 <h3 className="txt-gray3 txt-c-large txt-large2 me-3">تگ</h3>
                 <button className={styles["tagBtn"]}>
-                    <span className="me-2 txt-muted"><AiOutlineClose/></span>
+                    {/* <span className="me-2 txt-muted"><AiOutlineClose/></span> */}
                     { props.tag}
                 </button>
-                <div className="txt-gray ms-3 fw-500">2500 نتیجه</div>
+                <div className="txt-gray ms-3 fw-500">{props.totalCount} نتیجه</div>
             </div>
 
-            <div className={styles["aside"]+" mb-4"}>
+            {/* <div className={styles["aside"]+" mb-4"}>
                 <ul>
                     <h6 className='txt-gray3 mb-3 txt-c-large'>تگ های مرتبط</h6>
                     {
@@ -39,12 +39,12 @@ function TagAside(props){
                         </li>)
                     }
                 </ul>
-            </div>
+            </div> */}
 
             <div className={styles["aside"]}>
                 <div className="d-flex justify-content-center mb-5"> <button className={styles["filterBtn"]}>اعمال فیلتر</button> </div>
-                <FilterOption title="زبان جستجو" type="language" options={["زبان فارسی", "زبان عربی"]} />
                 <TreeFilter isSearch={true} />
+                <FilterOption title="زبان جستجو" type="language" options={["زبان فارسی", "زبان عربی"]} />
                 <FilterOption title="مرجع جستجو" type="language" options={["پایگاه آیت الله خامنه ای", "پایگاه آیت الله بهجت", "پایگاه آیت الله مکارم شیرازی", "پایگاه آیت الله سیستانی", "پایگاه آیت الله خویی", "پایگاه آیت الله هادوی تهرانی"]} />
                 <FilterOption last={true} title="منبع جستجو" type="language" options={["راسخون", "حوزه دات نت", "اسلام کوئست", "پرسمان دانشگاهیان", "حدیث نت", "ویکی نور", "قاموس نور"]} />
             </div>

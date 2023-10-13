@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
 import styles from "../../../../public/styles/categories.module.scss";
 
@@ -24,10 +24,10 @@ function PaginationCount({ totalCount, currentPage, pageItems, path, oneQuery })
     if( totalPage - parsedCurrentPage > 5 ){
         pages.push(
             <>
-                <li key={next+=1} className={styles["paginationItem"]}>
+                <li key={next+=3} className={styles["paginationItem"]}>
                     ...
                 </li>  
-                <li key={next+=2}  onClick={ ()=>navigateTopage(totalPage)} className={styles["paginationItem"]+" "+( totalPage == parsedCurrentPage ? styles["paginationItemActive"] : "")}>
+                <li key={next+=4}  onClick={ ()=>navigateTopage(totalPage)} className={styles["paginationItem"]+" "+( totalPage == parsedCurrentPage ? styles["paginationItemActive"] : "")}>
                     {totalPage}
                 </li> 
             </>

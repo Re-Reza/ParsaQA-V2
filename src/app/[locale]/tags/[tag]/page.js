@@ -1,3 +1,7 @@
+export const metadata = {
+    title: 'تگ ها',
+}
+
 import React, { use } from "react";
 import Header from "../../homeComponents/Header";
 import TagAside from "../TagAside";
@@ -43,7 +47,7 @@ function Tag({ params, searchParams }) {
             <div className="mainContentContainer">
                 <Header lang={params.locale}/>
                 <div className={styles["tag-mainContent"]}>
-                    <TagAside tag={decoded.replaceAll("-", " ")}/>
+                    <TagAside totalCount={data[0].meta.total_count} tag={decoded.replaceAll("-", " ")}/>
                     {
                         data? 
                             <div>
