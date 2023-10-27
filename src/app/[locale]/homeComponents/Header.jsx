@@ -4,10 +4,11 @@ import React, { useState, useEffect } from "react";
 import { usePathname, useParams } from "next/navigation";
 import Link from "next/link";
 import HeaderSearch from "./HeaderSearch";
-import HeaderCategory from "./HeaderCategory";
+// import HeaderCategory from "./HeaderCategory";
 import { IoDownloadOutline } from "react-icons/io5";
 import { BiSolidPencil } from "react-icons/bi";
 import HeaderLanguage from "./HeaderLanguage";
+import SigninSignUp from "./SigninSignUp";
 import { Spin as Hamburger } from 'hamburger-react';
 import { useTranslations } from 'next-intl';
 import AOS from "aos";
@@ -55,7 +56,7 @@ function Header(props) {
                     
                     <div className="d-flex align-items-center position-relative">
                         <button onClick={showHamMenu} className={styles["hamburgerBtn"]+" ms-2 me-sm-4"}><Hamburger/></button>
-                        <div className="me-5"><img style={ locale == "en" ? {transform : "rotateY(180deg)"}: {} } className={styles["logoImg"]} src="/imgs/logoParsa.png" alt="logo-parsa" /></div>
+                        <Link href="/" className="me-5"><img style={ locale == "en" ? {transform : "rotateY(180deg)"}: {} } className={styles["logoImg"]} src="/imgs/logoParsa.png" alt="logo-parsa" /></Link>
                         <ul className={styles["navLinks"]+" d-flex me-5"}>
                             {
                                 links.map((item, index) => <li className={"me-3 fw-500 " + (pathList.includes(item.path) ? styles["active-link"] : "")} key={index}><Link href={"/"+item.path}>{item.title}</Link></li>)
@@ -81,11 +82,7 @@ function Header(props) {
                     <div className="d-flex justify-content-center flex-wrap align-items-center position-relative">
                         {/* <button className={styles["installBtnMobile"]}><IoDownloadOutline/></button> */}
                         <button className={styles["installBtn"]+ " me-3"}><span className="txt-c-large me"><IoDownloadOutline/></span> <span className={styles["installText"]}>{t("installBtn")}</span></button>
-                        <div className="txt-darkBlue txt-c-normal lh-base text-center" style={{ paddingBottom : ".4em" }}>
-                            <span className="me-2"><Link href="/signin">{t("signin")}</Link></span>
-                            /
-                            <span className="ms-2"><Link href="/signup">{t("signup")}</Link></span>
-                        </div>
+                        <SigninSignUp />
                         <HeaderLanguage/>
                     </div>
 

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInastance = axios.create({
     baseURL : "https://api.parsaqa.com/api/v1/",
-    timeout : 10000,
+    timeout : 15000,
     headers : {
         "Content-Type" : "application/json"
     }

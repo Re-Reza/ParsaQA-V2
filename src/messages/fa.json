@@ -21,7 +21,11 @@
         "betweenTags" : "در بین تگ ها",
         "applyFilter" : "اعمال فیلتر",
         "multiSelect" : "انتخاب کنید",
-        "noMoreOptions" : "آیتمی یافت نشد"
+        "noMoreOptions" : "آیتمی یافت نشد",
+        "recording" : "درحال ضبط",
+        "recordStopped" : "ضبط متوقف شد",
+        "stopRecording" : "توقف ضبط",
+        "exit" : "خروج"
     },
     "footer" : {
         "title" : "پارسا",

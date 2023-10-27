@@ -123,3 +123,17 @@
     background-color: var(--darkBlue);
     color: #fff;
 }
+.notAswered { 
+    border-radius: 8px;
+    border: 2px solid #ACACAC;
+    background-color: rgb(172 172 172 / 17%);
+    padding: .5em;
+	color: #ACACAC;
+}  
+.answered { 
+    border-radius: 8px;
+    border: 2px solid #8F6ED1;
+    background: rgba(221, 208, 248, 0.50);
+    padding: .5em;
+    color: #8F6ED1;
+}

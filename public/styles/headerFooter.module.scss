@@ -54,21 +54,12 @@
     @include btnGeneral(.5em 1.3em, 1em, 5300, 20px);
 }
 .advancedFilterContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, max-content);
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
     margin-top: 2.2em;
-    grid-column-gap: 80px;
-    grid-row-gap: 23px;
     text-align: center;
     line-height: 1.5;
-}
-.tag{
-    background-color: var(--skyBlue);
-    border-radius: 6px;
-    padding: .5em;
-    margin-left: 1em;
-    color: #1A202C;
 }
 .active-filterButton{
     background: #EAF9FF;
@@ -96,7 +87,32 @@
 .optionsListContainer{
     background-color: #fff;
     border-radius: 7px;
-    padding: .6em;
+    padding: .15em;
+    display: flex;
+    align-items: flex-start;
+}
+.multiSelectContainer{
+    background-color: #fff;
+    border-radius: 6px;
+    padding: .2em;
+}
+.multiSelectList{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr) );
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+    margin-bottom: 1em;
+}
+.inputOption {
+    border-radius: 7px;
+    display: flex;
+    padding: .3em .5em;
+    justify-content: center;
+    color:#232323;
+    align-items: center;
+    background-color: var(--skyBlue);
+    white-space : wrap;
+    word-break: break-all;
 }
 .active-link{
     color: var(--darkBlue);
@@ -192,7 +208,7 @@
 }
 .advancedSearchBtn {
     @include btnBorederd(10px, #fff, 2px solid var(--darkBlue), var(--darkBlue));
-    @include btnGeneral(.4em .8em, .93em, 450, 10px);
+    @include btnGeneral(.4em .6em, .9em, 450, 10px);
     display: flex;
     align-items: center;
     &:hover{
@@ -232,7 +248,7 @@
     padding-bottom: 0;
 }
 .logoImg{
-    width: 90px;
+    width: 80px;
 }
 .recommandation{
     background-color: #fff;
@@ -312,6 +328,67 @@
     font-size: 1.1em;
     border-radius: 8px;
 }
+
+.recording{
+    color: #ff0000;
+    animation:  scaleChange .7s alternate infinite;
+}
+.stopRecording{
+    font-size: 0.5em;
+    position: absolute;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 0.36em;
+    line-height: 1.5;
+    white-space: nowrap;
+    border-radius: 10px;
+    font-weight: 400;
+}
+.stopRecording::after{
+    content: "";
+    background-color: #ff0000;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 38%;
+    top: 65%;
+    transform: rotate(45deg)
+}
+.userInfoContainer{
+    position: absolute;
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    padding: .6em 1.3em;
+    border-radius: 10px;
+    right: -40%;
+    top: 112%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 5;
+    transition: all .3s;
+}
+.userImg{
+    border-radius: 50%;
+    border: 2px solid var(--lightBlue);
+}
+// .userImgProfile{
+//     width: 55px;
+//     height: 55px;
+// }
+.userImg:hover .userInfoContainer{
+    visibility: visible;
+    opacity: 1;
+}
+
+@keyframes scaleChange {
+    0%{
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.25)
+    }
+}
+
 @media only screen and (max-width : 1000px ) {
     .installText{
         display: none;
@@ -337,7 +414,8 @@
 }
 @media only screen and (max-width : 769px ) {
     .advancedFilterContainer{
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        padding-bottom: 2.5em;
     }
     .header-searchContainer{
         width: 100%;
@@ -350,21 +428,32 @@
     .header-title  {
         font-size:  1.5em;
     }
+    .userImgProfile{
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .stopRecording::after{
+        width: 11px;
+        height: 11px;
+        top: 69%;
+    }
 }
 @media only screen and (max-width : 450px ) {
     .logoImg {
-        // width: 65px;
         display: none;
+    }
+    .userInfoContainer{
+        right: -170%;
     }
     .header{
         font-size: .8em;
     }
 }
 @media only screen and (max-width : 374px ) {
-    // .logoImg {
-    //     // width: 25px;
-    //     display: none;
-    // }
+    .userImgProfile{
+        width: 30px !important;
+        height: 30px !important;
+    }
     .header{
         font-size: .7em;
     }

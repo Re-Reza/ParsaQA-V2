@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { voiceSearch } from "../../../dataService/searchData"
 import QuestionItem from "../categoriesComponents/QuestionItem2";
-import Error from "../error/Error";
+import Error from "../annotations/Error";
 
 function MainContent(props){
 
@@ -54,7 +54,7 @@ function MainContent(props){
                 state.data ? 
                 <ul>
                 {
-                    state.data.map((item, index) => <QuestionItem isOld={true} isSearch={true} key={index} item={item} />)
+                    state.data.map((item, index) => <QuestionItem isOld={true} tag={true} isSearch={true} key={index} item={item} />)
                 }
                 </ul> :
                 <Error />  

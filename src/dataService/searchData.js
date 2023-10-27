@@ -34,3 +34,11 @@ export function voiceSearch(data) {
     });
 }
 
+export function convertVoiceToText(data) {
+    console.log(data);
+    return axiosInastance.post("speech/recognition", data, {
+        headers : { 
+            "content-type": "multipart/form-data",
+        }
+    } );
+}

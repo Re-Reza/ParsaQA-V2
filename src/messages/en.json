@@ -21,7 +21,11 @@
         "betweenTags" : "between tags",
         "applyFilter" : "apply filter",
         "multiSelect" : "select",
-        "noMoreOptions": "no more options"
+        "noMoreOptions": "no more options",
+        "recording" : "Recording",
+        "recordStopped" : "Recording stopped",
+        "stopRecording" : "Stop recording",
+        "exit" : "exit"
     }, 
     "footer" : {
         "title" : "Parsa",

@@ -18,7 +18,7 @@ export function generateStaticParams() {
 }
 
 export default async function LocaleLayout({ children, params : { locale } }) {
-  importBootstrap(locale);
+  // importBootstrap(locale);
 
   let messages;
   try {

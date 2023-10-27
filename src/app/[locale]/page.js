@@ -2,7 +2,9 @@ export const metadata = {
     title: 'پارسا',
 }
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
+export const revalidate = 43200;
+
 import  { use } from "react"
 import Header from "./homeComponents/Header";
 import Aside from "./homeComponents/Aside";
@@ -10,7 +12,7 @@ import Introduction from "./homeComponents/Introduction";
 import Questions from "./homeComponents/Questions";
 // import OurTeam from "./homeComponents/OurTeam";
 import Footer from "./homeComponents/Footer";
-import Error from "./error/Error";
+import Error from "./annotations/Error";
 import moment from "jalali-moment";
 import { getLastQuestions, getCategories, getHadis } from "../../dataService/homeData";
 

@@ -1,13 +1,22 @@
 "use client"
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../homeComponents/Header";
 import Footer from "../homeComponents/Footer";
 // import { FaLinkedin }  from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { HiOutlineMail } from "react-icons/hi";
+import AOS from "aos";
 import styles from "../../../../public/styles/aboutUs.module.scss";
+import "aos/dist/aos.css";
+
 
 function AboutUs(){
+
+  useEffect(() => {
+    AOS.init({
+        once : true
+    });
+  }, []);
 
     const t = useTranslations("aboutUs");
     // const teamList = [
@@ -38,33 +47,35 @@ function AboutUs(){
             <Header isAboutUs={true} />
 
             <div className="position-relative fw-500 txt-gray zindex-dropdown zindex-dropdown">
-              <h1 className={styles["title"]+" text-center lh-base txt-gray3"}>
+              <h1 data-aos="fade-up" data-aos-duration="1500" className={styles["title"]+" text-center lh-base txt-gray3"}>
                 {t("headings")}&nbsp;
                 <span  className="txt-darkBlue">{t("parsa")}</span>&nbsp;
               </h1>
 
-              <h3  style={{fontSize : "1.5rem"}} className="txt-c-large mb-4 mt-4 txt-gray3">
+              <h3 data-aos="fade-left" data-aos-duration="1000" style={{fontSize : "1.5rem"}} className="txt-c-large mb-4 mt-4 txt-gray3">
                 {t("pageTitle")}
               </h3>
-              <p className="lh-lg">
+              <p className="lh-lg" data-aos="fade-up" data-aos-duration="1000" >
                 {t("description")}
               </p>
-              <p className="mt-3 mb-3">{t("description2")}</p>
+              <p data-aos="fade-up" data-aos-duration="1000" className="mt-2 mb-3 lh-lg">{t("description2")}</p>
               <ul>
-                <li className={styles['featurelistItem']+" mb-3"}>{t("featureItem1")}</li>
-                <li className={styles['featurelistItem']+" mb-3"}>{t("featureItem2")}</li>
-                <li className={styles['featurelistItem']+" mb-3"}>{t("featureItem3")}</li>
-                <li className={styles['featurelistItem']+" mb-3"}>{t("featureItem4")}</li>
-                <li className={styles['featurelistItem']+" mb-3"}>{t("featureItem5")}</li>
-                <li className={styles['featurelistItem']+" mb-3"}>{t("featureItem6")}</li>
-                <li className={styles['featurelistItem']+" mb-3"}>{t("featureItem7")}</li>
-                <li className={styles['featurelistItem']+" mb-3"}>{t("featureItem8")}</li>
-              </ul>
+                <li data-aos="fade-up" data-aos-duration="1000" className={styles['featurelistItem']+" mb-3 lh-base"}>{t("featureItem1")}</li>
+                <li data-aos="fade-up" data-aos-duration="1200" className={styles['featurelistItem']+" mb-3 lh-base"}>{t("featureItem2")}</li>
+                <li data-aos="fade-up" data-aos-duration="1300" className={styles['featurelistItem']+" mb-3 lh-base"}>{t("featureItem3")}</li>
+                <li data-aos="fade-up" data-aos-duration="1300" className={styles['featurelistItem']+" mb-3 lh-base"}>{t("featureItem4")}</li>
+                <li data-aos="fade-up" data-aos-duration="1400" className={styles['featurelistItem']+" mb-3 lh-base"}>{t("featureItem5")}</li>
+                <li data-aos="fade-up" data-aos-duration="1400" className={styles['featurelistItem']+" mb-3 lh-base"}>{t("featureItem6")}</li>
+                <li data-aos="fade-up" data-aos-duration="1500" className={styles['featurelistItem']+" mb-3 lh-base"}>{t("featureItem7")}</li>
+                <li data-aos="fade-up" data-aos-duration="1500" className={styles['featurelistItem']+" mb-3 lh-base"}>{t("featureItem8")}</li>
+              </ul> 
               
-              <div className={styles["stayInTouchBox"]}>
-                <div className="text-white mb-3 txt-c-large txt-large"><HiOutlineMail/></div>
-                <p className="txt-gray3 txt-c-large mb-3 txt-c-large">{t("contactUs")}</p>
-                <p className="text-white txt-c-large">info@parsaqa.com</p>
+              <div data-aos-duration="1000" data-aos="zoom-in" className="d-flex justify-content-center"> 
+                <div className={styles["stayInTouchBox"]}>
+                  <div className={styles["contactMailIcon"]}><HiOutlineMail/></div>
+                  <p className="txt-gray3 txt-c-large mb-3 txt-c-large">{t("contactUs")}</p>
+                  <p className="text-white txt-c-large txt-large2">info@parsaqa.com</p>
+                </div>
               </div>
 
             </div>

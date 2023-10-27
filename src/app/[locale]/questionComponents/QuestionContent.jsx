@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { GoPencil } from "react-icons/go";
 import { BsShare, BsBookmark } from "react-icons/bs";
-import { BiUpvote, BiDownvote,  } from "react-icons/bi";
+import { BiUpArrow, BiDownArrow,  } from "react-icons/bi";
 import { AiOutlineEye } from "react-icons/ai";
 import moment from "jalali-moment";
 import { voteQuestion, voteAnswer } from "../../../dataService/questionData";
@@ -33,21 +33,21 @@ function QuestionContent(props) {
 
     function callVoteQuestion(weight){
         voteQuestion(id, weight).then( response => {
-            console.log(response)
+            // console.log(response)
             toast.success("با موفقیت انجام شد");
             setState({
                 ...state,
                 vote : state.vote + (weight)
             })
         }).catch( err => {
-            console.log(err)
+            // console.log(err)
             toast.error("خطایی رخ داده است")
         });
     }
 
     function callVoteAnswer(answerId, weight){
         voteAnswer(id, answerId, weight).then( response => {
-            console.log(response)
+            // console.log(response)
             toast.success("با موفقیت انجام شد");
             setState({
                 ...state,
@@ -57,7 +57,7 @@ function QuestionContent(props) {
                 }
             })
         }).catch( err => {
-            console.log(err)
+            // console.log(err)
             toast.error("خطایی رخ داده است")
         });
     }
@@ -70,12 +70,10 @@ function QuestionContent(props) {
          <ToastContainer
             position="top-right"
             autoClose={4000}
-            // hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
             rtl={true}
             pauseOnHover
-            // theme="light"
             />
             <div>
 
@@ -83,14 +81,14 @@ function QuestionContent(props) {
 
                     <div className="me-1 me-sm-2 me-md-3">
                         <div className="d-flex flex-column align-items-center mb-4">
-                            <button className="txt-c-medium txt-large2" onClick={()=> callVoteQuestion(1)} ><BiUpvote/></button>
-                            <div className="d-flex mt-3 mb-3"> <span>{t("rate")}</span>&nbsp;&nbsp;<span>{state.vote}</span> </div>
-                            <button className="txt-c-medium txt-large2"  onClick={()=> callVoteQuestion(-1)} ><BiDownvote/></button>
+                            <button className={styles["voteCircle"]+" "+styles["hover-green"] + " txt-c-medium txt-large2"} onClick={()=> callVoteQuestion(1)} ><BiUpArrow/></button>
+                            <div className="d-flex mt-3 mb-3 txt-c-normal"> <span>{t("rate")}</span>&nbsp;&nbsp;<span>{state.vote}</span> </div>
+                            <button className={styles["voteCircle"]+" "+styles["hover-red"] + " txt-c-medium txt-large2"}  onClick={()=> callVoteQuestion(-1)} ><BiDownArrow/></button>
                         </div>
 
-                        <div className="d-flex">
-                            <span className="me-1"><AiOutlineEye/></span>
-                            <span className="oneLineText">{sum_visits} {t("view")}</span>
+                        <div className="d-flex txt-muted txt-c-normal align-items-center">
+                            <span className="me-1 txt-large"><AiOutlineEye/></span>
+                            <span className="oneLineText">{t("view")} {sum_visits} </span>
                         </div>
 
                         <div className={styles["questionSource"]}>
@@ -101,7 +99,7 @@ function QuestionContent(props) {
                     <div>
                         <div className="mb-5">
                             <div className="d-flex mb-3">
-                                <p className="txt-gray3 txt-c-normal fw-500 lh-base">{title}</p>
+                                <p className="txt-gray3 txt-c-normal fw-500 lh-lg">{title}</p>
                                 {/* <div>
                                     <span>{t("readTime")}</span>
                                     <span></span>
@@ -137,20 +135,20 @@ function QuestionContent(props) {
                 
                 {
                     answers?
-                <div className={styles["questionContent-answer"]+" mt-4"}>
+                    <div className={styles["questionContent-answer"]+" mt-4"}>
                        
                         <ul>
                         {
                             answers.data.map((item, index) => <li className={styles["answerItem"]} key={index}>
                                 <div className="me-1 me-sm-2 me-md-3">
                                     <div className="d-flex flex-column align-items-center mb-4">
-                                        <button className="txt-c-large txt-large2" onClick={()=>callVoteAnswer(item.id, 1)}><BiUpvote/></button>
-                                        <div className="d-flex mt-3 mb-3"> <span>{t("rate")}</span>&nbsp;&nbsp;<span>{state.modified.id == item.id ? item.sum_votes + state.modified.weight : item.sum_votes }</span> </div>
-                                        <button className="txt-c-large txt-large2" onClick={()=>callVoteAnswer(item.id, -1)}><BiDownvote/></button>
+                                        <button className={styles["voteCircle"] +" "+styles["hover-green"]+" txt-c-medium txt-large2"} onClick={()=>callVoteAnswer(item.id, 1)}><BiUpArrow/></button>
+                                        <div className="d-flex mt-3 mb-3 txt-c-normal"> <span>{t("rate")}</span>&nbsp;&nbsp;<span>{state.modified.id == item.id ? item.sum_votes + state.modified.weight : item.sum_votes }</span> </div>
+                                        <button className={styles["voteCircle"]+" "+styles["hover-red"]+ " txt-c-medium txt-large2"} onClick={()=>callVoteAnswer(item.id, -1)}><BiDownArrow/></button>
                                     </div>
 
-                                    <div className="d-flex">
-                                        <span className="me-1"><AiOutlineEye/></span>
+                                    <div className="d-flex txt-muted txt-c-normal align-items-center ">
+                                        <span className="me-1 txt-large"><AiOutlineEye/></span>
                                         <span className="oneLineText">{item.sum_visits || 0 } {t("view")}</span>
                                     </div>
 
@@ -161,8 +159,8 @@ function QuestionContent(props) {
 
                                 <div className="w-100">
 
-                                    <div className="d-flex flex-columns justify-content-between ">
-                                        <p className="txt-gray3 fw-500 lh-base">{item.content}</p>
+                                    <div className="d-flex flex-column justify-content-between align-items-end">
+                                        <p className="txt-gray3 fw-500 lh-lg">{item.content}</p>
                                         <div className="mt-5">
                                             <span className="txt-muted">{moment(item.created_at).local(locale).format("YYYY/MM/DD")}</span>
                                         </div>

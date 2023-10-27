@@ -74,8 +74,10 @@
 }
 .questionSource{
     border-radius: 6px;
-    border: var(--darkBlue) 1px solid; 
+    font-weight: 500;
+    background-color: #8181811c;
     text-align: center;
+    color:  #818181;
     line-height: 1.2;
     padding: 1em;
     margin-top: 1em;
@@ -83,6 +85,21 @@
 .answerItem{
     display: flex;
     margin-bottom: 1.7em;
+}
+.voteCircle{
+    border: 2px solid #ACACAC;
+    color: #ACACAC;
+    padding: .2em;
+    border-radius: 50%; 
+    transition: all .4s;
+}
+.hover-green:hover{
+    color: #008000;
+    border-color: #008000;
+}
+.hover-red:hover{
+    color: #ff0000;
+    border-color: #ff0000;
 }
 @media only screen and (max-width : 800px) {
 	.contentContainer{

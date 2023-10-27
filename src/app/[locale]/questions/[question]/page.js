@@ -9,7 +9,7 @@ import RelatedQuestions from "../../questionComponents/RelatedQuestions";
 import QuestionContent from "../../questionComponents/QuestionContent";
 import { getQuestionContent, provideSimilarQuestions, getQuestionContentOldId } from "../../../../dataService/questionData";
 import { getLastQuestions } from "../../../../dataService/homeData";
-import Error from "../../error/Error";
+import Error from "../../annotations/Error";
 import styles from "../../../../../public/styles/question.module.scss";
 
 async function getQestionData(id){

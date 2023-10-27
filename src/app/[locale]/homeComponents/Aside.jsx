@@ -46,7 +46,7 @@ function Aside (props) {
                 <div className="txt-gray3 mb-4 txt-c-large" style={{fontSize: "1.4em"}}>{t("dailyHadis")}</div>
                 <div className={styles["hadisContainer"]}>
                     <h5 className="text-center mb-3 txt-c-large">{props.hadisData.author}</h5>
-                    <p className="lh-lg">
+                    <p className="lh-lg text-center">
                     {
                         props.hadisData.full_text
                     }

@@ -21,7 +21,11 @@
         "betweenTags" : "بين العلامات",
         "applyFilter" : "تطبيق الفلتر",
         "multiSelect" : "يختار",
-        "noMoreOptions" : "لا مزيد من الخيارات"
+        "noMoreOptions" : "لا مزيد من الخيارات",
+        "recording" : "تسجيل",
+        "recordStopped" : "توقف التسجيل",
+        "stopRecording" : "إيقاف التسجيل",
+        "exit" : "مخرج"
     }, 
     "footer" : {
         "title" : "بارسا",

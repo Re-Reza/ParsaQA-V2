@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 // import QuestionItem from "./QuestionItem";
 import QuestionItem from "./QuestionItem2";
-import { categoryList } from "./treeList";
-import styles from "../../../../public/styles/categories.module.scss";
+// import { categoryList } from "./treeList";
+// import styles from "../../../../public/styles/categories.module.scss";
 
 function MainContent(props) {
 
@@ -68,7 +68,7 @@ function MainContent(props) {
 
             <ul>
                 {
-                    props.data.map((item, index) => <QuestionItem isOld={true} isSearch={true} key={index} item={item} />)
+                    props.data.map((item, index) => <QuestionItem tag={true} isOld={true} isSearch={true} key={index} item={item} />)
                 }
             </ul> 
         </section>
