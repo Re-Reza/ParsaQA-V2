@@ -86,6 +86,14 @@ function Search(ctx) {
         data = use(getSearchData(search, [locale], page )); 
     }
 
+    let errorMsg = null;
+    if(data == null){
+        errorMsg = "در دریافت اطلاعات خطایی رخ داد است"
+    }
+    else if( data[0].questions == null){
+        errorMsg = "محتوایی برای سوال مورد نظر شما یافت نشد"
+    }
+
     const paginationPath = searchData == "advanceSearch" ? `/search/${searchData}?q=${q}&tags=${tags}&langs=${langs}&sources=${sources}&marjas=${marjas}&any_words=${any_words}&all_words=${all_words}&non_words=${non_words}` : `/search/${searchData}`;
 
     return (
@@ -101,12 +109,12 @@ function Search(ctx) {
                         <Aside />
                         <div>
                             {
-                                data ? 
+                                errorMsg == null ? 
                                 <>
                                     <MainContent query={searchData}  data={data[0].questions}/>
                                     <PaginationCount path={paginationPath} oneQuery={searchData == "advanceSearch" ? false : true} pageItems={12} currentPage={page ? page : 1 } totalCount={data[0].meta.total_count}/>
                                 </>
-                                : <Error/>
+                                : <Error text={errorMsg} />
                             }
                         </div>
                         

@@ -83,10 +83,10 @@ export default function VoiceRecorder(props){
                 </div> : <BiMicrophone/> } 
             </button> 
             {
-                state ? <Loading1 styles={params.locale == "en" ? { right : "13%" } : { left : "3%" } }/>: <></>
+                state ? <Loading1 locale={params.locale} />: <></>
             }
-            <div ref={modeRef} className={styles["recordMode"]}>
-                { isRecording ? t("recording") : t("recording") } 
+            <div ref={modeRef} style={params.locale == "en" ? { right:"50px"} : { left : "49px"} } className={styles["recordMode"]}>
+                {t("recording")} 
             </div>
 
         </div>

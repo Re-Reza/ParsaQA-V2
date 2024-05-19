@@ -365,17 +365,36 @@ select {
 	}
   }
   
+.fa-loading { 
+	left : 3%;
+ }
+ .en-loading{
+	 right : 13%;
+ }
+ 
 //-----------------------------------------------------------------------------------------------
-@media only screen and (max-width : 1200px) {
-	.mainContentContainer{
-		padding-left: 3em;
-		padding-right: 3em;
-	}
-}
 @media only screen and (max-width : 1200px) {
 	.mainContentContainer{
 		padding-left: 1.5em;
 		padding-right: 1.5em;
+	}
+	.en-loading{
+		right : 15%;
+	}
+}
+@media only screen and (max-width : 1000px) {
+	.en-loading{
+		right : 17%;
+	}
+}
+@media only screen and (max-width : 630px) {
+	.en-loading{
+		right : 25%;
+	}
+}
+@media only screen and (max-width : 400px) {
+	.en-loading{
+		right : 32%;
 	}
 }
 .home-questionContainer{

@@ -120,7 +120,8 @@ function HeaderSearch(props) {
                 text : null,
                 lang : null
             }
-            const value = searchInput.current.value.trim()
+            if (!searchInput.current) return;
+            const value = searchInput.current.value.trim();
             if( data.text != value ){
                 data = {
                     text : value,
